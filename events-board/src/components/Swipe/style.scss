@@ -1,0 +1,12 @@
+.swipearea {
+  position: absolute;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  transform: translateX(-100%);
+  left: 100%;
+  width: 15%;
+  height: 100vh;
+}

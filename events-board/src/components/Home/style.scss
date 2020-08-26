@@ -2,6 +2,10 @@ $bg: #2c148b;
 $text-color: #ffffff;
 $font: "Saira", sans-serif;
 
+.main {
+  min-height: 100vh;
+}
+
 .sidebar {
   background-color: $bg;
 

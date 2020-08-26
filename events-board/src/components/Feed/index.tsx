@@ -1,17 +1,16 @@
 import React from "react";
 
-type FeedProps = {
+interface FeedProps {
   onClick: any;
-  sbState: boolean;
-};
+}
 
-export default function Feed({ onClick, sbState }: FeedProps) {
+export default function Feed({ onClick }: FeedProps) {
   return (
     <div className="home">
       <h1>This is home</h1>
       <button
         onClick={() => {
-          onClick(!sbState);
+          onClick();
         }}
       >
         click
