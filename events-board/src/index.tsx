@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./components/DefCss/reset.css";
+import "./reset.css";
 import Home from "./components/Home/index";
 
 ReactDOM.render(
