@@ -1,4 +1,5 @@
 import React from "react";
+import "./style.scss";
 
 interface FeedProps {
   onClick: any;
@@ -6,15 +7,11 @@ interface FeedProps {
 
 export default function Feed({ onClick }: FeedProps) {
   return (
-    <div className="home">
-      <h1>This is home</h1>
-      <button
-        onClick={() => {
-          onClick();
-        }}
-      >
-        click
-      </button>
-    </div>
+    <main>
+      <div className="home" onClick={() => onClick(false)}>
+        <h1>This is home</h1>
+      </div>
+      <button className="sbbtn" onClick={() => onClick(true)}></button>
+    </main>
   );
 }

@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <Router>
       {/* This is the sidebar */}
-      <div className="">
+      <div className="wrapper">
         <Swipe
           touchEnd={() => {
             openSB(true);
@@ -22,7 +22,7 @@ export default function Home() {
             <li>
               <Link
                 onClick={() => {
-                  openSB(!open);
+                  openSB(false);
                 }}
                 to="/"
               >
@@ -32,7 +32,7 @@ export default function Home() {
             <li>
               <Link
                 onClick={() => {
-                  openSB(!open);
+                  openSB(false);
                 }}
                 to="/login"
               >
@@ -42,7 +42,7 @@ export default function Home() {
             <li>
               <Link
                 onClick={() => {
-                  openSB(!open);
+                  openSB(false);
                 }}
                 to="/register"
               >
@@ -51,28 +51,17 @@ export default function Home() {
             </li>
           </ul>
         </aside>
-        <main
-          onClick={() => {
-            openSB(false);
-          }}
-          className="main"
-        >
-          <Switch>
-            <Route exact path="/">
-              <Feed
-                onClick={() => {
-                  openSB(!open);
-                }}
-              />
-            </Route>
-            <Route path="/login">
-              <LogIn />
-            </Route>
-            <Route path="/register">
-              <Register />
-            </Route>
-          </Switch>
-        </main>
+        <Switch>
+          <Route exact path="/">
+            <Feed onClick={openSB} />
+          </Route>
+          <Route path="/login">
+            <LogIn />
+          </Route>
+          <Route path="/register">
+            <Register />
+          </Route>
+        </Switch>
       </div>
     </Router>
   );

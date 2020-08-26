@@ -1,0 +1,20 @@
+.sbbtn {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 90%;
+  left: 90%;
+
+  width: 40px;
+  height: 40px;
+
+  border-color: #ffffff00;
+  border-radius: 20px;
+
+  background-image: url("./media/btn.png");
+  background-position: center;
+}
+
+main,
+.home {
+  min-height: 100vh;
+}
