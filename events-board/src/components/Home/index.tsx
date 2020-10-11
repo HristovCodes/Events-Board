@@ -24,7 +24,7 @@ export default function Home() {
             {userIsAuthenticated ? (
               <Feed onClick={openSB} />
             ) : (
-              <Redirect to="/login"></Redirect>
+              <Redirect to="/register"></Redirect>
             )}
           </Route>
           <Route path="/login">

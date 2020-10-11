@@ -1,35 +1,69 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./style.scss";
 import Logo from "../media/logo.png";
+import Firebase from "../../firebase";
 
 interface RegisterProps {
   authUser: any;
 }
 
 export default function Register({ authUser }: RegisterProps) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   let registerUser = function () {
-    authUser(true);
+    Firebase.auth
+      .createUserWithEmailAndPassword(email, password)
+      .then(function () {
+        authUser(true);
+        //redirect user to feed
+      })
+      .catch(function (error) {
+        // Handle Errors here.
+        alert(error.code);
+        alert(error.message);
+      });
   };
+
   return (
     <div className="register">
       <form className="regform">
         <h1>Eventó Board</h1>
         <div>
           <label htmlFor="email">E-mail:</label>
-          <input aria-required="true" type="email" name="email"></input>
+          <input
+            aria-required="true"
+            type="email"
+            name="email"
+            id="email"
+            onChange={(e) => setEmail(e.target.value)}
+          ></input>
         </div>
         <div>
           <label htmlFor="username">Username:</label>
-          <input aria-required="true" type="text" name="username"></input>
+          <input
+            aria-required="true"
+            pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$"
+            type="text"
+            name="username"
+            id="username"
+          ></input>
         </div>
         <div>
           <label htmlFor="password">Password:</label>
-          <input aria-required="true" type="password" name="password"></input>
+          <input
+            aria-required="true"
+            pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
+            type="password"
+            name="password"
+            id="password"
+            onChange={(e) => setPassword(e.target.value)}
+          ></input>
         </div>
-        <Link onClick={registerUser} to="/">
+        <button type="submit" onClick={registerUser}>
           Sign Up
-        </Link>
+        </button>
         <Link to="/login">Sign In</Link>
         <img src={Logo} alt="logo"></img>
       </form>
