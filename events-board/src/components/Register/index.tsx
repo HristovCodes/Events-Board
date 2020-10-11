@@ -9,12 +9,12 @@ export default function Register() {
       <form className="regform">
         <h1>Eventó Board</h1>
         <div>
-          <label htmlFor="username">Username:</label>
-          <input aria-required="true" type="text" name="username"></input>
-        </div>
-        <div>
           <label htmlFor="email">E-mail:</label>
           <input aria-required="true" type="email" name="email"></input>
+        </div>
+        <div>
+          <label htmlFor="username">Username:</label>
+          <input aria-required="true" type="text" name="username"></input>
         </div>
         <div>
           <label htmlFor="password">Password:</label>
