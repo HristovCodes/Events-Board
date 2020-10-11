@@ -12,7 +12,7 @@ export default function Home() {
     <Router>
       {/* This is the sidebar */}
       <div className="wrapper">
-        <SideBar openSB={openSB} open={open}></SideBar>
+        <SideBar openSB={openSB} loggedin={false} open={open}></SideBar>
         <Switch>
           <Route exact path="/">
             <Feed onClick={openSB} />
