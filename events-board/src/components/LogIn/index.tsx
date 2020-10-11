@@ -3,7 +3,14 @@ import { Link } from "react-router-dom";
 import "../Register/style.scss";
 import Logo from "../media/logo.png";
 
-export default function LogIn() {
+interface LogInProps {
+  authUser: any;
+}
+
+export default function LogIn({ authUser }: LogInProps) {
+  let logInUser = function () {
+    authUser(true);
+  };
   return (
     <div className="login">
       <form className="logform">
@@ -16,7 +23,9 @@ export default function LogIn() {
           <label htmlFor="password">Password:</label>
           <input aria-required="true" type="password" name="password"></input>
         </div>
-        <Link to="/">Sign In</Link>
+        <Link onClick={logInUser} to="/">
+          Sign In
+        </Link>
         <Link to="/register">Sign Up</Link>
         <img src={Logo} alt="logo"></img>
       </form>

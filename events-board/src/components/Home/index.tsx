@@ -13,7 +13,7 @@ import "./style.scss";
 
 export default function Home() {
   const [open, openSB] = useState(false);
-  const [userIsAuthenticated, authenticate] = useState(true);
+  const [userIsAuthenticated, authenticate] = useState(false);
   return (
     <Router>
       {/* This is the sidebar */}
@@ -28,10 +28,10 @@ export default function Home() {
             )}
           </Route>
           <Route path="/login">
-            <LogIn />
+            <LogIn authUser={authenticate} />
           </Route>
           <Route path="/register">
-            <Register />
+            <Register authUser={authenticate} />
           </Route>
         </Switch>
       </div>
