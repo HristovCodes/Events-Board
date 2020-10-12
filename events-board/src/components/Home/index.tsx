@@ -21,17 +21,23 @@ export default function Home() {
         <SideBar openSB={openSB} open={open}></SideBar>
         <Switch>
           <Route exact path="/">
-            {userIsAuthenticated ? (
-              <Feed onClick={openSB} />
-            ) : (
+            {!userIsAuthenticated ? (
               <Redirect to="/register"></Redirect>
+            ) : (
+              <Feed onClick={openSB} />
             )}
           </Route>
           <Route path="/login">
-            <LogIn authUser={authenticate} />
+            <LogIn
+              authUser={authenticate}
+              isAuthenticated={userIsAuthenticated}
+            />
           </Route>
           <Route path="/register">
-            <Register authUser={authenticate} />
+            <Register
+              authUser={authenticate}
+              isAuthenticated={userIsAuthenticated}
+            />
           </Route>
         </Switch>
       </div>

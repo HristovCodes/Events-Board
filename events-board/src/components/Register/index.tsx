@@ -1,23 +1,26 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect, useHistory } from "react-router-dom";
 import "./style.scss";
 import Logo from "../media/logo.png";
 import Firebase from "../../firebase";
 
 interface RegisterProps {
   authUser: any;
+  isAuthenticated: boolean;
 }
 
-export default function Register({ authUser }: RegisterProps) {
+export default function Register({ authUser, isAuthenticated }: RegisterProps) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  let history = useHistory();
 
   let registerUser = function () {
     Firebase.auth
       .createUserWithEmailAndPassword(email, password)
       .then(function () {
         authUser(true);
-        //redirect user to feed
+        history.replace("/");
       })
       .catch(function (error) {
         // Handle Errors here.
@@ -61,9 +64,9 @@ export default function Register({ authUser }: RegisterProps) {
             onChange={(e) => setPassword(e.target.value)}
           ></input>
         </div>
-        <button type="submit" onClick={registerUser}>
+        <Link to="/" onClick={registerUser}>
           Sign Up
-        </button>
+        </Link>
         <Link to="/login">Sign In</Link>
         <img src={Logo} alt="logo"></img>
       </form>

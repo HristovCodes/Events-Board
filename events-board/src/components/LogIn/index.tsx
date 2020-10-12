@@ -5,9 +5,10 @@ import Logo from "../media/logo.png";
 
 interface LogInProps {
   authUser: any;
+  isAuthenticated: boolean;
 }
 
-export default function LogIn({ authUser }: LogInProps) {
+export default function LogIn({ authUser, isAuthenticated }: LogInProps) {
   let logInUser = function () {
     authUser(true);
   };
