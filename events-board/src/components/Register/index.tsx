@@ -1,15 +1,11 @@
+// eslint-disable-next-line
 import React, { useState } from "react";
-import { Link, Redirect, useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import "./style.scss";
 import Logo from "../media/logo.png";
 import Firebase from "../../firebase";
 
-interface RegisterProps {
-  authUser: any;
-  isAuthenticated: boolean;
-}
-
-export default function Register({ authUser, isAuthenticated }: RegisterProps) {
+export default function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -17,10 +13,13 @@ export default function Register({ authUser, isAuthenticated }: RegisterProps) {
 
   let registerUser = function () {
     Firebase.auth
-      .createUserWithEmailAndPassword(email, password)
-      .then(function () {
-        authUser(true);
-        history.replace("/");
+      .signInWithEmailAndPassword(email, password)
+      .then(() => {
+        Firebase.auth.onAuthStateChanged(function (user) {
+          if (user) {
+            history.replace("/");
+          }
+        });
       })
       .catch(function (error) {
         // Handle Errors here.
