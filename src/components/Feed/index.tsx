@@ -1,5 +1,5 @@
 // eslint-disable-next-line
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./style.scss";
 import Swipe from "../Swipe/index";
 import Firebase from "../../firebase";
@@ -11,6 +11,7 @@ interface FeedProps {
 
 export default function Feed({ onClick }: FeedProps) {
   const [isAuth, auth] = useState(true);
+  let [userData, setUserData] = useState(Firebase.userData);
   let history = useHistory();
 
   let signOut = function () {
@@ -28,8 +29,9 @@ export default function Feed({ onClick }: FeedProps) {
 
   useEffect(() => {
     Firebase.auth.onAuthStateChanged(function (user) {
-      if (user) {
+      if (user !== null) {
         auth(true);
+        setUserData(user);
       } else {
         auth(false);
       }
@@ -45,6 +47,10 @@ export default function Feed({ onClick }: FeedProps) {
       ></Swipe>
       <div className="home" onClick={() => onClick(false)}>
         <h1>This is home</h1>
+        <p>{userData?.displayName}</p>
+        <p>{userData?.email}</p>
+        <p>{userData?.photoURL}</p>
+        <p>{userData?.emailVerified}</p>
         <button onClick={signOut}>sign out</button>
       </div>
       <button className="sbbtn" onClick={() => onClick(true)}></button>

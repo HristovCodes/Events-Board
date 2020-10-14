@@ -16,58 +16,9 @@ const firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
-// const updateHighScore = (num, id, img) => {
-//   if (!isNaN(num)) {
-//     id = id === "" ? "Jhon" : id;
-//     db.ref("highscore/" + img + "/" + id).update(
-//       {
-//         highscore: num,
-//         name: id,
-//       },
-//       function (error) {
-//         if (error) {
-//           console.log(error + "\nhere");
-//         }
-//       }
-//     );
-//   }
-// };
-
-// const getData = async (num) => {
-//   if (isNaN(num)) return false;
-
-//   const data = await db
-//     .ref("imgs/")
-//     .once("value")
-//     .then((snapshot) => {
-//       return snapshot.val() === null ? {} : snapshot.val();
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//       return "";
-//     });
-//   return data;
-// };
-
-// // not tested needs to be mocked because data is
-// // always different and bigger every time
-// const getHighScore = async () => {
-//   let dataHS = await db
-//     .ref("highscore/")
-//     .once("value")
-//     .then((snapshot) => {
-//       return snapshot.val() === null ? {} : snapshot.val();
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//       return "";
-//     });
-//   dataHS = Object.values(dataHS);
-//   return dataHS;
-// };
-
 export default {
   db: firebase.database(),
   app: firebase.app(),
   auth: firebase.auth(),
+  userData: firebase.auth().currentUser,
 };
