@@ -47,10 +47,18 @@ export default function Feed({ onClick }: FeedProps) {
       ></Swipe>
       <div className="home" onClick={() => onClick(false)}>
         <h1>This is home</h1>
-        <p>{userData?.displayName}</p>
-        <p>{userData?.email}</p>
-        <p>{userData?.photoURL}</p>
-        <p>{userData?.emailVerified}</p>
+        <div>
+          <p>Display name: {userData?.displayName}</p>
+          <br></br>
+          <p>Email: {userData?.email}</p>
+          <br></br>
+          <p>PhotoUrl: {userData?.photoURL}</p>
+          <br></br>
+          <p>
+            Email verified (true/false): {userData?.emailVerified.toString()}
+          </p>
+          <br></br>
+        </div>
         <button onClick={signOut}>sign out</button>
       </div>
       <button className="sbbtn" onClick={() => onClick(true)}></button>

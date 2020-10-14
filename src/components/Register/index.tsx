@@ -7,17 +7,30 @@ import Firebase from "../../firebase";
 
 export default function Register() {
   const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
   const [password, setPassword] = useState("");
 
   let history = useHistory();
 
   let registerUser = function () {
     Firebase.auth
-      .signInWithEmailAndPassword(email, password)
+      .createUserWithEmailAndPassword(email, password)
       .then(() => {
         Firebase.auth.onAuthStateChanged(function (user) {
           if (user) {
-            history.replace("/");
+            user.updateProfile({ displayName: name }).catch(function (error) {
+              console.log(error.code);
+              console.log(error.message);
+            });
+            user
+              .sendEmailVerification()
+              .then(function () {
+                history.replace("/");
+              })
+              .catch(function (error) {
+                console.log(error.code);
+                console.log(error.message);
+              });
           }
         });
       })
@@ -50,6 +63,7 @@ export default function Register() {
             type="text"
             name="username"
             id="username"
+            onChange={(e) => setName(e.target.value)}
           ></input>
         </div>
         <div>
