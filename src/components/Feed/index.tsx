@@ -7,17 +7,18 @@ import { Redirect, useHistory } from "react-router-dom";
 
 interface FeedProps {
   onClick: any;
+  auth: any;
+  userData: any;
 }
 
-export default function Feed({ onClick }: FeedProps) {
-  const [isAuth, auth] = useState(true);
-  let [userData, setUserData] = useState(Firebase.userData);
+export default function Feed({ onClick, auth, userData }: FeedProps) {
   let history = useHistory();
 
   let signOut = function () {
     Firebase.auth
       .signOut()
       .then(() => {
+        auth(false);
         history.replace("/login");
       })
       .catch(function (error) {
@@ -27,18 +28,7 @@ export default function Feed({ onClick }: FeedProps) {
       });
   };
 
-  useEffect(() => {
-    Firebase.auth.onAuthStateChanged(function (user) {
-      if (user !== null) {
-        auth(true);
-        setUserData(user);
-      } else {
-        auth(false);
-      }
-    });
-  });
-
-  return isAuth ? (
+  return (
     <main>
       <Swipe
         touchEnd={() => {
@@ -63,7 +53,5 @@ export default function Feed({ onClick }: FeedProps) {
       </div>
       <button className="sbbtn" onClick={() => onClick(true)}></button>
     </main>
-  ) : (
-    <Redirect to="/login"></Redirect>
   );
 }
