@@ -5,7 +5,11 @@ import "./style.scss";
 import Logo from "../media/logo.png";
 import Firebase from "../../firebase";
 
-export default function Register() {
+interface RegisterInterface {
+  auth: any;
+}
+
+export default function Register({ auth }: RegisterInterface) {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
@@ -25,6 +29,7 @@ export default function Register() {
             user
               .sendEmailVerification()
               .then(function () {
+                auth(true);
                 history.replace("/");
               })
               .catch(function (error) {
@@ -38,6 +43,7 @@ export default function Register() {
         // Handle Errors here.
         alert(error.code);
         alert(error.message);
+        history.replace("/register");
       });
   };
 
@@ -77,9 +83,9 @@ export default function Register() {
             onChange={(e) => setPassword(e.target.value)}
           ></input>
         </div>
-        <Link to="/" onClick={registerUser}>
+        <button type="button" onClick={registerUser}>
           Sign Up
-        </Link>
+        </button>
         <Link to="/login">Sign In</Link>
         <img src={Logo} alt="logo"></img>
       </form>

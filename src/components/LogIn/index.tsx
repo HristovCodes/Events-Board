@@ -5,7 +5,11 @@ import "../Register/style.scss";
 import Logo from "../media/logo.png";
 import Firebase from "../../firebase";
 
-export default function LogIn() {
+interface LogInInterface {
+  auth: any;
+}
+
+export default function LogIn({ auth }: LogInInterface) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -17,6 +21,7 @@ export default function LogIn() {
       .then(() => {
         Firebase.auth.onAuthStateChanged(function (user) {
           if (user) {
+            auth(true);
             history.replace("/");
           }
         });
@@ -53,9 +58,9 @@ export default function LogIn() {
             onChange={(e) => setPassword(e.target.value)}
           ></input>
         </div>
-        <Link onClick={logInUser} to="/">
+        <button type="button" onClick={logInUser}>
           Sign In
-        </Link>
+        </button>
         <Link to="/register">Sign Up</Link>
         <img src={Logo} alt="logo"></img>
       </form>

@@ -42,10 +42,10 @@ export default function Home() {
             )}
           </Route>
           <Route path="/login">
-            <LogIn />
+            <LogIn auth={auth} />
           </Route>
           <Route path="/register">
-            <Register />
+            <Register auth={auth} />
           </Route>
         </Switch>
       </div>
