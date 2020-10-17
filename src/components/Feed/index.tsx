@@ -1,9 +1,7 @@
 // eslint-disable-next-line
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import "./style.scss";
 import Swipe from "../Swipe/index";
-import Firebase from "../../firebase";
-import { Redirect, useHistory } from "react-router-dom";
 
 interface FeedProps {
   onClick: any;
@@ -12,22 +10,6 @@ interface FeedProps {
 }
 
 export default function Feed({ onClick, auth, userData }: FeedProps) {
-  let history = useHistory();
-
-  let signOut = function () {
-    Firebase.auth
-      .signOut()
-      .then(() => {
-        auth(false);
-        history.replace("/login");
-      })
-      .catch(function (error) {
-        // An error happened.
-        alert(error.code);
-        alert(error.message);
-      });
-  };
-
   return (
     <main>
       <Swipe
@@ -49,9 +31,8 @@ export default function Feed({ onClick, auth, userData }: FeedProps) {
           </p>
           <br></br>
         </div>
-        <button onClick={signOut}>sign out</button>
       </div>
-      <button className="sbbtn" onClick={() => onClick(true)}></button>
+      <a className="sbbtn" onClick={() => onClick(true)}></a>
     </main>
   );
 }
