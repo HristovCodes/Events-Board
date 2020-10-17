@@ -1,0 +1,124 @@
+$color: #2c148b;
+$font: "Saira", sans-serif;
+$secfont: "Roboto", sans-serif;
+
+.container {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  left: 50%;
+  transform: translateX(-50%);
+  //above might not be needed if this el is inside of grid
+
+  width: 280px;
+  min-height: 250px;
+
+  background: #ffffff;
+  border: 1px solid #2c148b;
+  box-sizing: border-box;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+
+  > .title {
+    font-family: $font;
+    font-style: normal;
+    font-weight: bold;
+
+    color: #2c148b;
+
+    text-decoration-line: underline;
+    text-align: center;
+
+    margin: 10px 0;
+
+    > h2 {
+      font-size: 12px;
+    }
+
+    > h1 {
+      font-size: 16px;
+    }
+  }
+
+  > .desc {
+    width: 60%;
+    padding: 0 15px;
+
+    > summary,
+    > p {
+      font-family: $secfont;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 16px;
+
+      color: #565656;
+    }
+  }
+
+  > .buttons {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+    margin-bottom: 20px;
+    margin-top: auto;
+
+    a,
+    a:active,
+    a:focus,
+    a:visited {
+      display: block;
+      font-family: $secfont;
+      text-align: center;
+      text-decoration: none;
+
+      cursor: pointer;
+
+      width: 96px;
+      padding: 4px 0;
+
+      border: 1px solid $color;
+      border-radius: 3px;
+    }
+
+    > .going {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-evenly;
+    }
+
+    > .going {
+      & a {
+        background-color: $color;
+        color: #ffffff;
+      }
+      & p {
+        font-size: 12px;
+        margin-right: 5px;
+      }
+    }
+
+    > .interested {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-evenly;
+    }
+
+    > .interested {
+      & a {
+        color: #000000;
+        background-color: #ffffff;
+      }
+      & p {
+        font-size: 12px;
+        margin-right: 5px;
+      }
+    }
+  }
+}

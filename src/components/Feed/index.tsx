@@ -2,6 +2,7 @@
 import React from "react";
 import "./style.scss";
 import Swipe from "../Swipe/index";
+import Event from "../Event/index";
 
 interface FeedProps {
   onClick: any;
@@ -31,6 +32,8 @@ export default function Feed({ onClick, auth, userData }: FeedProps) {
           </p>
           <br></br>
         </div>
+        <Event></Event>
+        <Event></Event>
       </div>
       <a className="sbbtn" onClick={() => onClick(true)}></a>
     </main>
