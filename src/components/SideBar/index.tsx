@@ -41,7 +41,14 @@ export default function SideBar({ open, openSB, auth }: SideBarProps) {
           </Link>
         </li>
         <li>
-          <a onClick={signOut}>Log off</a>
+          <a
+            onClick={() => {
+              openSB(false);
+              signOut();
+            }}
+          >
+            Log off
+          </a>
         </li>
       </ul>
     </aside>
