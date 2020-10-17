@@ -32,7 +32,7 @@ export default function Home() {
   return (
     <Router>
       <div className="wrapper">
-        <SideBar openSB={openSB} open={open}></SideBar>
+        <SideBar auth={auth} openSB={openSB} open={open}></SideBar>
         <Switch>
           <Route exact path="/">
             {isAuth ? (
