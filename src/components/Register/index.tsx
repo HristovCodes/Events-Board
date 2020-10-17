@@ -83,10 +83,12 @@ export default function Register({ auth }: RegisterInterface) {
             onChange={(e) => setPassword(e.target.value)}
           ></input>
         </div>
-        <button type="button" onClick={registerUser}>
+        <a className="btnmain" onClick={registerUser}>
           Sign Up
-        </button>
-        <Link to="/login">Sign In</Link>
+        </a>
+        <Link className="btnsec" to="/login">
+          Sign In
+        </Link>
         <img src={Logo} alt="logo"></img>
       </form>
     </div>

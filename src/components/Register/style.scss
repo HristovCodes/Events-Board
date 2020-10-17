@@ -66,8 +66,7 @@ $secfont: "Roboto", sans-serif;
     text-align: center;
     text-decoration: none;
 
-    color: #000000;
-    background-color: #ffffff;
+    cursor: pointer;
 
     width: 100px;
     padding: 4px 0;
@@ -76,15 +75,19 @@ $secfont: "Roboto", sans-serif;
     border-radius: 3px;
   }
 
+  > .btnmain {
+    background-color: $color;
+    color: #ffffff;
+  }
+
+  > .btnsec {
+    color: #000000;
+    background-color: #ffffff;
+  }
+
   img {
     width: 25%;
   }
-}
-
-.regform > a:first-of-type,
-.logform > a:first-of-type {
-  background-color: $color;
-  color: #ffffff;
 }
 
 body {

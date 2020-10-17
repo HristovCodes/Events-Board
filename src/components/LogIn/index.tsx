@@ -58,10 +58,12 @@ export default function LogIn({ auth }: LogInInterface) {
             onChange={(e) => setPassword(e.target.value)}
           ></input>
         </div>
-        <button type="button" onClick={logInUser}>
+        <a className="btnmain" onClick={logInUser}>
           Sign In
-        </button>
-        <Link to="/register">Sign Up</Link>
+        </a>
+        <Link className="btnsec" to="/register">
+          Sign Up
+        </Link>
         <img src={Logo} alt="logo"></img>
       </form>
     </div>
