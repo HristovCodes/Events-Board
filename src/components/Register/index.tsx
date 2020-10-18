@@ -30,7 +30,7 @@ export default function Register({ auth }: RegisterInterface) {
               .sendEmailVerification()
               .then(function () {
                 auth(true);
-                history.replace("/");
+                history.replace("/Events-Board");
               })
               .catch(function (error) {
                 console.log(error.code);
@@ -43,7 +43,7 @@ export default function Register({ auth }: RegisterInterface) {
         // Handle Errors here.
         alert(error.code);
         alert(error.message);
-        history.replace("/register");
+        history.replace("/Events-Board/Register");
       });
   };
 
@@ -86,7 +86,7 @@ export default function Register({ auth }: RegisterInterface) {
         <a className="btnmain" onClick={registerUser}>
           Sign Up
         </a>
-        <Link className="btnsec" to="/login">
+        <Link className="btnsec" to="/Events-Board/Login">
           Sign In
         </Link>
         <img src={Logo} alt="logo"></img>

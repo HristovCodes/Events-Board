@@ -34,17 +34,17 @@ export default function Home() {
       <div className="wrapper">
         <SideBar auth={auth} openSB={openSB} open={open}></SideBar>
         <Switch>
-          <Route exact path="/">
+          <Route exact path="/Events-Board">
             {isAuth ? (
               <Feed userData={userData} auth={auth} onClick={openSB} />
             ) : (
-              <Redirect to="/login"></Redirect>
+              <Redirect to="/Events-Board/Login"></Redirect>
             )}
           </Route>
-          <Route path="/login">
+          <Route path="/Events-Board/Login">
             <LogIn auth={auth} />
           </Route>
-          <Route path="/register">
+          <Route path="/Events-Board/Register">
             <Register auth={auth} />
           </Route>
         </Switch>

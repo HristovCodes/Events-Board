@@ -18,7 +18,7 @@ export default function SideBar({ open, openSB, auth }: SideBarProps) {
       .signOut()
       .then(() => {
         auth(false);
-        history.replace("/login");
+        history.replace("/Events-Board/Login");
       })
       .catch(function (error) {
         // An error happened.
@@ -35,7 +35,7 @@ export default function SideBar({ open, openSB, auth }: SideBarProps) {
             onClick={() => {
               openSB(false);
             }}
-            to="/"
+            to="/Events-Board"
           >
             Home
           </Link>

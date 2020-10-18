@@ -22,7 +22,7 @@ export default function LogIn({ auth }: LogInInterface) {
         Firebase.auth.onAuthStateChanged(function (user) {
           if (user) {
             auth(true);
-            history.replace("/");
+            history.replace("/Events-Board");
           }
         });
       })
@@ -30,6 +30,7 @@ export default function LogIn({ auth }: LogInInterface) {
         // Handle Errors here.
         alert(error.code);
         alert(error.message);
+        history.replace("/Events-Board/Login");
       });
   };
 
@@ -61,7 +62,7 @@ export default function LogIn({ auth }: LogInInterface) {
         <a className="btnmain" onClick={logInUser}>
           Sign In
         </a>
-        <Link className="btnsec" to="/register">
+        <Link className="btnsec" to="/Events-Board/Register">
           Sign Up
         </Link>
         <img src={Logo} alt="logo"></img>
