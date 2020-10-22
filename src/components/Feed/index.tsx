@@ -18,6 +18,7 @@ export default function Feed({ onClick, auth, userData }: FeedProps) {
           onClick(true);
         }}
       ></Swipe>
+      <a className="sbbtn" onClick={() => onClick(true)}></a>
       <div className="home" onClick={() => onClick(false)}>
         <h1>This is home</h1>
         <div>
@@ -35,7 +36,6 @@ export default function Feed({ onClick, auth, userData }: FeedProps) {
         <Event></Event>
         <Event></Event>
       </div>
-      <a className="sbbtn" onClick={() => onClick(true)}></a>
     </main>
   );
 }

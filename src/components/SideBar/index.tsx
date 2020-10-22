@@ -41,6 +41,16 @@ export default function SideBar({ open, openSB, auth }: SideBarProps) {
           </Link>
         </li>
         <li>
+          <Link
+            onClick={() => {
+              openSB(false);
+            }}
+            to="/Events-Board/Submit"
+          >
+            Submit
+          </Link>
+        </li>
+        <li>
           <a
             onClick={() => {
               openSB(false);

@@ -12,6 +12,7 @@ import Register from "../Register/index";
 import SideBar from "../SideBar/index";
 import Firebase from "../../firebase";
 import "./style.scss";
+import SubmitEvent from "../SubmitEvent";
 
 export default function Home() {
   const [open, openSB] = useState(false);
@@ -33,21 +34,25 @@ export default function Home() {
     <Router>
       <div className="wrapper">
         <SideBar auth={auth} openSB={openSB} open={open}></SideBar>
-        <Switch>
-          <Route exact path="/Events-Board">
-            {isAuth ? (
+        {isAuth ? (
+          <Switch>
+            <Route exact path="/Events-Board">
               <Feed userData={userData} auth={auth} onClick={openSB} />
-            ) : (
-              <Redirect to="/Events-Board/Login"></Redirect>
-            )}
-          </Route>
-          <Route path="/Events-Board/Login">
-            <LogIn auth={auth} />
-          </Route>
-          <Route path="/Events-Board/Register">
-            <Register auth={auth} />
-          </Route>
-        </Switch>
+            </Route>
+            <Route exact path="/Events-Board/Submit">
+              <SubmitEvent userData={userData} auth={auth} onClick={openSB} />
+            </Route>
+          </Switch>
+        ) : (
+          <Switch>
+            <Route path="/Events-Board/Login">
+              <LogIn auth={auth} />
+            </Route>
+            <Route path="/Events-Board/Register">
+              <Register auth={auth} />
+            </Route>
+          </Switch>
+        )}
       </div>
     </Router>
   );
