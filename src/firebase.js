@@ -16,9 +16,24 @@ const firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
+let event = (title, date, desc) => {
+  if (title && date && desc) {
+    let newPostKey = firebase.database().ref().child("events").push().key;
+    let data = {};
+    data[newPostKey] = {
+      eventTitle: title,
+      eventDate: date,
+      eventDesc: desc,
+    };
+    firebase
+      .database()
+      .ref("events/" + date)
+      .update(data);
+  }
+};
+
 export default {
-  db: firebase.database(),
-  app: firebase.app(),
+  submitEvent: event,
   auth: firebase.auth(),
   userData: firebase.auth().currentUser,
 };
