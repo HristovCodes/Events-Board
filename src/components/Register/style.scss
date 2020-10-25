@@ -37,10 +37,14 @@ $secfont: "Roboto", sans-serif;
     input {
       font-family: $secfont;
     }
-
+    label {
+      font-size: 16px;
+    }
     input {
+      height: 23px;
       border: 1px solid $color;
       border-radius: 3px;
+      padding: 2px;
     }
   }
 
