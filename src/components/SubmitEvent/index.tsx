@@ -1,9 +1,9 @@
 // eslint-disable-next-line
 import React, { useState } from "react";
 import "./style.scss";
-import Event from "../Event/index";
 import Swipe from "../Swipe";
 import Firebase from "../../firebase";
+import { useHistory } from "react-router-dom";
 
 interface SubmitEventProps {
   onClick: any;
@@ -20,6 +20,13 @@ export default function SubmitEvent({
   const [date, setDate] = useState("");
   const [desc, setDesc] = useState("");
 
+  let history = useHistory();
+
+  let submitEvent = () => {
+    Firebase.submitEvent(title, date, desc);
+    history.replace("/Events-Board");
+  };
+
   return (
     <div>
       <Swipe
@@ -28,8 +35,8 @@ export default function SubmitEvent({
         }}
       ></Swipe>
       <a className="sbbtn" onClick={() => onClick(true)}></a>
-      <main onClick={() => onClick(false)}>
-        <form className="submit">
+      <main className="main" onClick={() => onClick(false)}>
+        <form className="submitform">
           <h1>Submit an event</h1>
           <div>
             <label htmlFor="title">Title:</label>
@@ -45,7 +52,6 @@ export default function SubmitEvent({
             <label htmlFor="date">Date:</label>
             <input
               aria-required="true"
-              pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$"
               type="date"
               name="date"
               id="date"
@@ -56,20 +62,13 @@ export default function SubmitEvent({
             <label htmlFor="desc">Description:</label>
             <input
               aria-required="true"
-              pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
               type="text"
               name="desc"
               id="desc"
               onChange={(e) => setDesc(e.target.value)}
             ></input>
           </div>
-          <button
-            type="button"
-            className="btnmain"
-            onClick={() => {
-              Firebase.submitEvent(title, date, desc);
-            }}
-          >
+          <button type="button" className="btnmain" onClick={submitEvent}>
             Add event
           </button>
         </form>
