@@ -3,14 +3,16 @@ import React from "react";
 import "./style.scss";
 import { Link, useHistory } from "react-router-dom";
 import Firebase from "../../firebase";
+import UserData from "../UserData";
 
 interface SideBarProps {
   open: boolean;
   openSB: any;
   auth: any;
+  userData: any;
 }
 
-export default function SideBar({ open, openSB, auth }: SideBarProps) {
+export default function SideBar({ open, openSB, auth, userData}: SideBarProps) {
   let history = useHistory();
 
   let signOut = function () {
@@ -29,6 +31,7 @@ export default function SideBar({ open, openSB, auth }: SideBarProps) {
 
   return (
     <aside className={"sidebar " + open.toString()}>
+      <UserData userData={userData}></UserData>
       <ul>
         <li>
           <Link
