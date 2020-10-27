@@ -35,7 +35,7 @@ export default function Home() {
   return (
     <Router>
       <div className="wrapper">
-        <SideBar auth={auth} openSB={openSB} open={open} profileName={userData?.displayName}></SideBar>
+        <SideBar auth={auth} openSB={openSB} open={open} userProfileName={userData?.displayName} userProfilePic={userData?.photoURL}></SideBar>
         {isAuth ? (
           <Switch>
             <Route exact path="/Events-Board">
@@ -45,10 +45,10 @@ export default function Home() {
               <SubmitEvent userData={userData} auth={auth} onClick={openSB} />
             </Route>
             <Route exact path="/Events-Board/Profile">
-              <Profile userData={userData}/>
+              <Profile userData={userData} onClick={openSB}/>
             </Route>
             <Route exact path="/Events-Board/ChangeProfileData">
-              <ChangeProfileData auth={auth}/>
+              <ChangeProfileData auth={auth} onClick={openSB}/>
             </Route>
           </Switch>
         ) : (

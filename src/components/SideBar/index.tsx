@@ -10,10 +10,11 @@ interface SideBarProps {
   open: boolean;
   openSB: any;
   auth: any;
-  profileName: any;
+  userProfileName: any;
+  userProfilePic: any;
 }
 
-export default function SideBar({ open, openSB, auth, profileName}: SideBarProps) {
+export default function SideBar({ open, openSB, auth, userProfileName, userProfilePic}: SideBarProps) {
   let history = useHistory();
 
   let signOut = function () {
@@ -47,7 +48,7 @@ export default function SideBar({ open, openSB, auth, profileName}: SideBarProps
           <Link onClick={() => {
               openSB(false);
             }} to="/Events-Board/Profile">
-            {profileName}
+            {userProfileName}
           </Link>
         </li>
         <li>

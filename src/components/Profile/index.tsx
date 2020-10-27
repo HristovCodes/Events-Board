@@ -1,20 +1,28 @@
 // eslint-disable-next-line
-import React, { useState } from "react";
+import React from "react";
 import "./style.scss";
-import Firebase from "../../firebase";
-import { Link, Router, useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import Swipe from "../Swipe";
 
 interface ProfileProps {
   userData: any;
+  onClick: any;
 }
 
-export default function SubmitEvent({
-  userData
+export default function Profile({
+  userData,
+  onClick
 }: ProfileProps) {
   let history = useHistory();
 
   return (
       <main className="main">
+          <Swipe
+            touchEnd={() => {
+              onClick(true);
+            }}
+          ></Swipe>
+          <a className="sbbtn" onClick={() => onClick(true)}></a>
           <div>
           <p>Display name: {userData?.displayName}</p>
           <br></br>

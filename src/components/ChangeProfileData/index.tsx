@@ -2,34 +2,29 @@
 import React, { useState } from "react";
 import "./style.scss";
 import Firebase from "../../firebase";
-import { Link, Router, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import Swipe from "../Swipe";
 
 interface ProfileProps {
   auth: any;
+  onClick: any;
 }
 
-export default function SubmitEvent({
-  auth
+export default function ChangeProfileData({
+  auth,
+  onClick
 }: ProfileProps) {
   const [email, setEmail] = useState("");
   const [photoURL, setPhotoURL] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [validPicURL, setValidity] = useState(false);
+
   const query = new URLSearchParams(window.location.search);
   const varToChange = query.get('v')
   
   
   let history = useHistory();
-  let validPicURL = false;
-  function PicURLLoad()
-  {
-    validPicURL = true;
-  }
-
-  function PicURLError(){
-    validPicURL = false;
-  }
-  //funcs and bool stopping invalid urls from being given
 
   let updateEmail = function(){
     var user = Firebase.auth.currentUser;
@@ -74,7 +69,7 @@ export default function SubmitEvent({
     var user = Firebase.auth.currentUser;
 
     if(user){//user exists
-      if(password==confirmPassword)//password and confirm_password fields have the same value
+      if(password === confirmPassword)//password and confirm_password fields have the same value
       {
         user.updatePassword(password)
         .then(() => {//update and logout
@@ -104,28 +99,43 @@ export default function SubmitEvent({
   if(varToChange === "Email")//check if email prep form
   {
     htmlToRender =
-    <form className="emailform">
-      <h1>Please enter your new Email.</h1>
-      <div>
-        <label htmlFor="email">E-mail:</label>
-        <input
-          aria-required="true"
-          type="email"
-          name="email"
-          id="email"
-          onChange={(e) => setEmail(e.target.value)}
-        ></input>
-      </div>
-      <a className="btnmain" onClick={updateEmail}>
-        Update Email
-      </a>
-    </form>
+    <div><Swipe
+          touchEnd={() => {
+            onClick(true);
+          }}
+      ></Swipe>
+      <a className="sbbtn" onClick={() => onClick(true)}></a>
+      <form className="emailform">
+        <h1>Please enter your new Email.</h1>
+        <div>
+          <label htmlFor="email">E-mail:</label>
+          <input
+            aria-required="true"
+            type="email"
+            name="email"
+            id="email"
+            onChange={(e) => setEmail(e.target.value)}
+          ></input>
+        </div>
+        <button className="btnmain" onClick={updateEmail}>
+          Update Email
+        </button>
+      </form>
+    </div>
+    
   }
 
   if(varToChange === "Photo")//check if photo and prep form
   {
       htmlToRender = 
-      <form className="photoform">
+      <div>
+        <Swipe
+          touchEnd={() => {
+            onClick(true);
+          }}
+        ></Swipe>
+        <a className="sbbtn" onClick={() => onClick(true)}></a>
+        <form className="photoform">
         <label htmlFor="photo">Photo URL:</label>
           <input
             aria-required="true"
@@ -138,19 +148,28 @@ export default function SubmitEvent({
           <p>Live Preview</p>
           <br></br>
           <div className="imgPreview">
-           <img src={photoURL} alt="The link provided is not valid" onLoad={PicURLLoad} onError={PicURLError} ></img>
+           <img src={photoURL} alt="The link provided is not valid" onLoad={() => setValidity(true)} onError={() => setValidity(false)} ></img>
           </div>
         </div>
         <a className="btnmain" onClick={updatePhotoURL} >
           Update Photo
         </a>
-      </form>
+        </form>
+      </div>
+      
   }
 
   if(varToChange === "Password")//check if password and prep form
   {
     htmlToRender =
-    <form className="passwordform">
+    <div>
+      <Swipe
+          touchEnd={() => {
+            onClick(true);
+          }}
+      ></Swipe>
+      <a className="sbbtn" onClick={() => onClick(true)}></a>
+      <form className="passwordform">
       <h1>Please enter your new Password.</h1>
       <div>
         <label htmlFor="password">Password:</label>
@@ -176,7 +195,9 @@ export default function SubmitEvent({
       <a className="btnmain" onClick={updatePassword}>
         Update Password
       </a>
-    </form>
+      </form>
+    </div>
+    
   }
 
   
