@@ -13,6 +13,8 @@ import SideBar from "../SideBar/index";
 import Firebase from "../../firebase";
 import "./style.scss";
 import SubmitEvent from "../SubmitEvent";
+import Profile from "../Profile";
+import ChangeProfileData from "../ChangeProfileData"
 
 export default function Home() {
   const [open, openSB] = useState(false);
@@ -33,7 +35,7 @@ export default function Home() {
   return (
     <Router>
       <div className="wrapper">
-        <SideBar auth={auth} openSB={openSB} open={open} userData={userData}></SideBar>
+        <SideBar auth={auth} openSB={openSB} open={open} profileName={userData?.displayName}></SideBar>
         {isAuth ? (
           <Switch>
             <Route exact path="/Events-Board">
@@ -41,6 +43,12 @@ export default function Home() {
             </Route>
             <Route exact path="/Events-Board/Submit">
               <SubmitEvent userData={userData} auth={auth} onClick={openSB} />
+            </Route>
+            <Route exact path="/Events-Board/Profile">
+              <Profile userData={userData}/>
+            </Route>
+            <Route exact path="/Events-Board/ChangeProfileData">
+              <ChangeProfileData auth={auth}/>
             </Route>
           </Switch>
         ) : (

@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import "./style.scss";
 import Swipe from "../Swipe";
 import Firebase from "../../firebase";
-import { useHistory } from "react-router-dom";
+import { Link, Router, useHistory } from "react-router-dom";
 
 interface SubmitEventProps {
   onClick: any;
@@ -19,7 +19,7 @@ export default function SubmitEvent({
   const [title, setTitle] = useState("");
   const [date, setDate] = useState("");
   const [desc, setDesc] = useState("");
-
+  //alert(window.location.search);
   let history = useHistory();
 
   let submitEvent = () => {
