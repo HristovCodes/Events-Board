@@ -1,0 +1,23 @@
+$bg: #2c148b;
+$font: "Saira", sans-serif;
+
+p {
+  font-family: $font;
+  font-size: 16px;
+}
+
+.sbbtn {
+  position: fixed;
+  transform: translate(-50%, -50%);
+  top: 90%;
+  left: 90%;
+
+  width: 40px;
+  height: 40px;
+
+  border-color: #ffffff00;
+  border-radius: 20px;
+
+  background-image: url("../media/btn.png");
+  background-position: center;
+}

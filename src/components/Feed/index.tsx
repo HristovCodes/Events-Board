@@ -21,18 +21,6 @@ export default function Feed({ onClick, auth, userData }: FeedProps) {
       <a className="sbbtn" onClick={() => onClick(true)}></a>
       <div className="home" onClick={() => onClick(false)}>
         <h1>This is home</h1>
-        <div>
-          <p>Display name: {userData?.displayName}</p>
-          <br></br>
-          <p>Email: {userData?.email}</p>
-          <br></br>
-          <p>PhotoUrl: {userData?.photoURL}</p>
-          <br></br>
-          <p>
-            Email verified (true/false): {userData?.emailVerified.toString()}
-          </p>
-          <br></br>
-        </div>
         <Event></Event>
         <Event></Event>
       </div>
