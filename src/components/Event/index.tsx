@@ -2,12 +2,28 @@
 import React from "react";
 import "./style.scss";
 
-export default function Event() {
+interface EventInterface {
+  date: Date;
+  name: String;
+  description: String;
+  ammountInterested: Number;
+  ammountGoing: Number;
+  url: String;
+}
+
+export default function Event({
+  date,
+  name,
+  description,
+  ammountGoing,
+  ammountInterested,
+  url,
+}: EventInterface) {
   return (
     <article className="container">
       <header className="title">
-        <h2>Date: 15.15.2020</h2>
-        <h1>Event name</h1>
+        <h2>Date: {date}</h2>
+        <h1>{name}</h1>
       </header>
       <details className="desc">
         {/* 
@@ -21,19 +37,15 @@ export default function Event() {
           Lorem Ipsum is simply dummy text
           <img></img>
         </summary>
-        <p>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s.
-        </p>
+        <p>{description}</p>
       </details>
       <div className="buttons">
         <div className="going">
-          <p>12</p>
+          <p>{ammountGoing}</p>
           <a>Going</a>
         </div>
         <div className="interested">
-          <p>4</p>
+          <p>{ammountInterested}</p>
           <a>Interested</a>
         </div>
       </div>
