@@ -1,8 +1,9 @@
 // eslint-disable-next-line
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./style.scss";
 import Swipe from "../Swipe/index";
 import Event from "../Event/index";
+import Firebase from "../../firebase";
 
 interface FeedProps {
   onClick: any;
@@ -11,6 +12,19 @@ interface FeedProps {
 }
 
 export default function Feed({ onClick, auth, userData }: FeedProps) {
+  const [events, setEvents] = useState();
+
+  useEffect(() => {
+    // pulls events from database
+    if (events === undefined)
+      Firebase.database
+        .ref("events/")
+        .once("value")
+        .then(function (snapshot) {
+          setEvents(snapshot.val());
+        });
+  });
+
   return (
     <main>
       <Swipe
@@ -33,8 +47,6 @@ export default function Feed({ onClick, auth, userData }: FeedProps) {
           </p>
           <br></br>
         </div>
-        <Event></Event>
-        <Event></Event>
       </div>
     </main>
   );
