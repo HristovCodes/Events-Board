@@ -19,7 +19,7 @@ export default function SubmitEvent({
   const [title, setTitle] = useState("");
   const [date, setDate] = useState("");
   const [desc, setDesc] = useState("");
-
+  
   let history = useHistory();
 
   let submitEvent = () => {

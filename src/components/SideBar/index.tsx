@@ -1,16 +1,20 @@
 // eslint-disable-next-line
 import React from "react";
 import "./style.scss";
-import { Link, useHistory } from "react-router-dom";
+import { Link, Route, Router, useHistory, useParams } from "react-router-dom";
 import Firebase from "../../firebase";
+import UserData from "../Profile";
+import SubmitEvent from "../SubmitEvent";
 
 interface SideBarProps {
   open: boolean;
   openSB: any;
   auth: any;
+  userProfileName: any;
+  userProfilePic: any;
 }
 
-export default function SideBar({ open, openSB, auth }: SideBarProps) {
+export default function SideBar({ open, openSB, auth, userProfileName, userProfilePic}: SideBarProps) {
   let history = useHistory();
 
   let signOut = function () {
@@ -31,13 +35,20 @@ export default function SideBar({ open, openSB, auth }: SideBarProps) {
     <aside className={"sidebar " + open.toString()}>
       <ul>
         <li>
-          <Link
+          <a
             onClick={() => {
               openSB(false);
+              signOut();
             }}
-            to="/Events-Board"
           >
-            Home
+            Log off
+          </a>
+        </li>
+        <li>
+          <Link onClick={() => {
+              openSB(false);
+            }} to="/Events-Board/Profile">
+            {userProfileName}
           </Link>
         </li>
         <li>
@@ -51,14 +62,14 @@ export default function SideBar({ open, openSB, auth }: SideBarProps) {
           </Link>
         </li>
         <li>
-          <a
+          <Link
             onClick={() => {
               openSB(false);
-              signOut();
             }}
+            to="/Events-Board"
           >
-            Log off
-          </a>
+            Home
+          </Link>
         </li>
       </ul>
     </aside>
