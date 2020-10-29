@@ -34,6 +34,7 @@ let event = (title, date, desc) => {
 
 export default {
   submitEvent: event,
+  database: firebase.database(),
   auth: firebase.auth(),
   userData: firebase.auth().currentUser,
 };

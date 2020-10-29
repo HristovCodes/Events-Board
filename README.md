@@ -3,15 +3,15 @@
 
 ## Table of Contents
 
-- [Screenshot](#screenshot)
+- [Figma Board](#figma-board)
 - [Production site](#production-site)
 - [Installing dependencies](#installing-dependencies)
 - [Test](#test)
 - [Contributing](#contribute)
 - [Contributors](#contributors)
 
-## Screenshot
-W.I.P
+## Figma Board
+Link to the board [here](https://www.figma.com/file/uUpsCP0gak7711r98Poedw/App-Event-o-Board?node-id=0%3A1).
 
 ## Production site
 

@@ -3,14 +3,8 @@ $font: "Saira", sans-serif;
 $secfont: "Roboto", sans-serif;
 
 .container {
-  position: relative;
-
   display: flex;
   flex-direction: column;
-
-  left: 50%;
-  transform: translateX(-50%);
-  //above might not be needed if this el is inside of grid
 
   width: 280px;
   min-height: 250px;
@@ -43,7 +37,6 @@ $secfont: "Roboto", sans-serif;
   }
 
   > .desc {
-    width: 60%;
     padding: 0 15px;
 
     > summary,
