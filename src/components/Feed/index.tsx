@@ -35,16 +35,16 @@ export default function Feed({ onClick, auth, userData }: FeedProps) {
           });
         }
       }
+      let wrapper = (
+        <ul className="eventsGrid">
+          {temp.map((el) => {
+            return <li key={el[0]}>{el[1]}</li>;
+          })}
+        </ul>
+      );
+      return wrapper;
     }
-    let wrapper = (
-      <ul className="eventsGrid">
-        {temp.map((el) => {
-          return <li key={el[0]}>{el[1]}</li>;
-        })}
-      </ul>
-    );
-    console.log("done");
-    return wrapper;
+    return "Loading...";
   };
 
   useEffect(() => {
@@ -56,7 +56,6 @@ export default function Feed({ onClick, auth, userData }: FeedProps) {
         .then(function (snapshot) {
           setEvents(snapshot.val());
         });
-    structureEvents(events);
   });
 
   return (
