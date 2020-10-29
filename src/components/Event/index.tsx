@@ -4,11 +4,11 @@ import "./style.scss";
 
 interface EventInterface {
   date: Date;
-  name: String;
-  description: String;
+  name: string;
+  description: string;
   ammountInterested: Number;
   ammountGoing: Number;
-  url: String;
+  url: string;
 }
 
 export default function Event({
@@ -20,7 +20,7 @@ export default function Event({
   url,
 }: EventInterface) {
   return (
-    <article className="container">
+    <div className="container">
       <header className="title">
         <h2>Date: {date}</h2>
         <h1>{name}</h1>
@@ -49,6 +49,6 @@ export default function Event({
           <a>Interested</a>
         </div>
       </div>
-    </article>
+    </div>
   );
 }
