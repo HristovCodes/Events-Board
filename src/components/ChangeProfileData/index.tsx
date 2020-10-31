@@ -26,7 +26,7 @@ export default function ChangeProfileData({
 
   let history = useHistory();
 
-  let updateEmail = () => {
+  let updateEmail = function () {
     var user = Firebase.auth.currentUser;
 
     if (user) {//user exists
