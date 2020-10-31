@@ -30,21 +30,33 @@ export default function ChangeProfileData({
     var user = Firebase.auth.currentUser;
 
     if(user){//user exists
-        user.updateEmail(email)
+      user.updateEmail(email)
           .then(() => {//update email
             alert("Your Email has been changed!");
-            Firebase.auth.signOut();//sign out
-            auth(false);//set auth to false
-            history.replace("/Events-Board/LogIn");
+            Firebase.auth.signOut().then(() => {
+              auth(false);//set auth to false
+              history.replace("/Events-Board/LogIn");
+            })//sign out
+            .catch(function (error) {
+              // An error happened.
+              alert(error.code);
+              alert(error.message);
+            });
           }).catch(function (error){
             alert(error.code);
             alert(error.message);//something happened
 
             if(error.code === "auth/requires-recent-login")//user has been logged in for too long relog
             {
-              Firebase.auth.signOut();
-              auth(false);
-              history.replace("/Events-Board/LogIn");
+              Firebase.auth.signOut().then(() => {
+                auth(false);//set auth to false
+                history.replace("/Events-Board/LogIn");
+              })//sign out
+              .catch(function (error) {
+                // An error happened.
+                alert(error.code);
+                alert(error.message);
+              });
             }
           })
     }
@@ -74,9 +86,15 @@ export default function ChangeProfileData({
         user.updatePassword(password)
         .then(() => {//update and logout
           alert("Your Password has been changed!");
-          Firebase.auth.signOut();
-          auth(false);
-          history.replace("/Events-Board/LogIn");
+          Firebase.auth.signOut().then(() => {
+              auth(false);//set auth to false
+              history.replace("/Events-Board/LogIn");
+            })//sign out
+            .catch(function (error) {
+              // An error happened.
+              alert(error.code);
+              alert(error.message);
+            });
         }).catch(function (error){//something happened
           alert(error.code);
           alert(error.message);
@@ -99,7 +117,8 @@ export default function ChangeProfileData({
   if(varToChange === "Email")//check if email prep form
   {
     htmlToRender =
-    <div><Swipe
+    <div>
+      <Swipe
           touchEnd={() => {
             onClick(true);
           }}
@@ -107,7 +126,6 @@ export default function ChangeProfileData({
       <a className="sbbtn" onClick={() => onClick(true)}></a>
       <form className="emailform">
         <h1>Please enter your new Email.</h1>
-        <div>
           <label htmlFor="email">E-mail:</label>
           <input
             aria-required="true"
@@ -116,10 +134,9 @@ export default function ChangeProfileData({
             id="email"
             onChange={(e) => setEmail(e.target.value)}
           ></input>
-        </div>
-        <button className="btnmain" onClick={updateEmail}>
+        <a className="btnmain" onClick={updateEmail}>
           Update Email
-        </button>
+        </a>
       </form>
     </div>
     
