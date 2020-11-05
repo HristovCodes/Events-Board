@@ -4,6 +4,7 @@ import "./style.scss";
 import Swipe from "../Swipe/index";
 import Event from "../Event/index";
 import Firebase from "../../firebase";
+import Wrapper from "../Wrapper/index";
 
 interface FeedProps {
   onClick: any;
@@ -44,7 +45,7 @@ export default function Feed({ onClick, auth, userData }: FeedProps) {
       );
       return wrapper;
     }
-    return "Loading...";
+    return <p>"Loading..."</p>;
   };
 
   useEffect(() => {
@@ -59,16 +60,8 @@ export default function Feed({ onClick, auth, userData }: FeedProps) {
   });
 
   return (
-    <main>
-      <Swipe
-        touchEnd={() => {
-          onClick(true);
-        }}
-      ></Swipe>
-      <a className="sbbtn" onClick={() => onClick(true)}></a>
-      <div className="home" onClick={() => onClick(false)}>
-        {structureEvents(events)}
-      </div>
-    </main>
+    <Wrapper onClick={onClick} cssClass="home">
+      {structureEvents(events)}
+    </Wrapper>
   );
 }
