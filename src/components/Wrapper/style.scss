@@ -3,7 +3,26 @@ Some styles that need to be applied to all pages
 */
 
 // Makes the whole page clickable to close the sidebar
-.main > div {
+.close {
   min-width: 100vw;
   min-height: 100vh;
+}
+
+// Style for the sidebar opening button
+.sbbtn {
+  position: fixed;
+  transform: translate(-50%, -50%);
+  top: 90%;
+  left: 90%;
+
+  cursor: pointer;
+
+  width: 40px;
+  height: 40px;
+
+  border-color: #ffffff00;
+  border-radius: 20px;
+
+  background-image: url("../media/btn.png");
+  background-position: center;
 }
