@@ -14,7 +14,7 @@ import Firebase from "../../firebase";
 import "./style.scss";
 import SubmitEvent from "../SubmitEvent";
 import Profile from "../Profile";
-import ChangeProfileData from "../ChangeProfileData"
+import ChangeProfileData from "../ChangeProfileData";
 
 export default function Home() {
   const [open, openSB] = useState(false);
@@ -35,20 +35,26 @@ export default function Home() {
   return (
     <Router>
       <div className="wrapper">
-        <SideBar auth={auth} openSB={openSB} open={open} userProfileName={userData?.displayName} userProfilePic={userData?.photoURL}></SideBar>
+        <SideBar
+          auth={auth}
+          openSB={openSB}
+          open={open}
+          userProfileName={userData?.displayName}
+          userProfilePic={userData?.photoURL}
+        ></SideBar>
         {isAuth ? (
           <Switch>
             <Route exact path="/Events-Board">
               <Feed userData={userData} auth={auth} onClick={openSB} />
             </Route>
             <Route exact path="/Events-Board/Submit">
-              <SubmitEvent userData={userData} auth={auth} onClick={openSB} />
+              <SubmitEvent onClick={openSB} />
             </Route>
             <Route exact path="/Events-Board/Profile">
-              <Profile userData={userData} onClick={openSB}/>
+              <Profile userData={userData} onClick={openSB} />
             </Route>
             <Route exact path="/Events-Board/ChangeProfileData">
-              <ChangeProfileData auth={auth} onClick={openSB}/>
+              <ChangeProfileData auth={auth} onClick={openSB} />
             </Route>
           </Switch>
         ) : (

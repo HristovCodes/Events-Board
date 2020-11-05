@@ -1,7 +1,6 @@
 // eslint-disable-next-line
 import React, { useEffect, useState } from "react";
 import "./style.scss";
-import Swipe from "../Swipe/index";
 import Event from "../Event/index";
 import Firebase from "../../firebase";
 import Wrapper from "../Wrapper/index";
