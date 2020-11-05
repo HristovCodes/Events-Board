@@ -1,0 +1,9 @@
+/*
+Some styles that need to be applied to all pages
+*/
+
+// Makes the whole page clickable to close the sidebar
+.main > div {
+  min-width: 100vw;
+  min-height: 100vh;
+}

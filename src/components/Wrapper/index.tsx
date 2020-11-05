@@ -1,6 +1,7 @@
 // eslint-disable-next-line
 import React from "react";
 import Swipe from "../Swipe";
+import "./style.scss";
 
 interface WrapperProps {
   onClick: any;
