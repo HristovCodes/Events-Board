@@ -18,7 +18,7 @@ export default function Wrapper({ onClick, cssClass, children }: WrapperProps) {
         }}
       ></Swipe>
       <a className="sbbtn" onClick={() => onClick(true)}></a>
-      <div className={cssClass} onClick={() => onClick(false)}>
+      <div className={"close " + cssClass} onClick={() => onClick(false)}>
         {children}
       </div>
     </main>
