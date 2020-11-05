@@ -1,7 +1,7 @@
 // eslint-disable-next-line
 import React from "react";
 import "./style.scss";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Swipe from "../Swipe";
 
 interface ProfileProps {
@@ -13,7 +13,6 @@ export default function Profile({
   userData,
   onClick
 }: ProfileProps) {
-  let history = useHistory();
 
   return (
       <main className="main">
