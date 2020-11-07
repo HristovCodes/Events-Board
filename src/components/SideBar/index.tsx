@@ -1,10 +1,8 @@
 // eslint-disable-next-line
 import React from "react";
 import "./style.scss";
-import { Link, Route, Router, useHistory, useParams } from "react-router-dom";
+import { Link,  useHistory } from "react-router-dom";
 import Firebase from "../../firebase";
-import UserData from "../Profile";
-import SubmitEvent from "../SubmitEvent";
 
 interface SideBarProps {
   open: boolean;

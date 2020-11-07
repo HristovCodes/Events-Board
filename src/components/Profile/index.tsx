@@ -74,7 +74,7 @@ export default function Profile({ userData, onClick }: ProfileProps) {
         </div>
         <p onClick={openPicture}>{userData?.photoURL} (click to view)</p>
         {open ? (
-          <img alt="No Photo URL provided" src={userData?.photoURL}></img>
+          <img alt="No URL provided" src={userData?.photoURL}></img>
         ) : (
           ""
         )}

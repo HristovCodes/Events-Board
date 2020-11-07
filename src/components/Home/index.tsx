@@ -4,17 +4,17 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Redirect,
 } from "react-router-dom";
-import LogIn from "../LogIn/index";
-import Feed from "../Feed/index";
-import Register from "../Register/index";
-import SideBar from "../SideBar/index";
+import LogIn from "../LogIn";
+import Feed from "../Feed";
+import Register from "../Register";
+import SideBar from "../SideBar";
 import Firebase from "../../firebase";
 import "./style.scss";
 import SubmitEvent from "../SubmitEvent";
 import Profile from "../Profile";
 import ChangeProfileData from "../ChangeProfileData";
+import Error404 from "../Error404";
 
 export default function Home() {
   const [open, openSB] = useState(false);
@@ -45,7 +45,7 @@ export default function Home() {
         {isAuth ? (
           <Switch>
             <Route exact path="/Events-Board">
-              <Feed userData={userData} auth={auth} onClick={openSB} />
+              <Feed onClick={openSB} />
             </Route>
             <Route exact path="/Events-Board/Submit">
               <SubmitEvent onClick={openSB} />
@@ -56,6 +56,9 @@ export default function Home() {
             <Route exact path="/Events-Board/ChangeProfileData">
               <ChangeProfileData auth={auth} onClick={openSB} />
             </Route>
+            <Route path="/Events-Board/*">
+              <Error404 onClick={openSB}></Error404>
+            </Route>
           </Switch>
         ) : (
           <Switch>
@@ -64,6 +67,9 @@ export default function Home() {
             </Route>
             <Route path="/Events-Board/Register">
               <Register auth={auth} />
+            </Route>
+            <Route path="/Events-Board/*">
+              <Error404 onClick={openSB}></Error404>
             </Route>
           </Switch>
         )}
