@@ -25,7 +25,8 @@ $font: "Saira", sans-serif;
     border-left: 1px solid #ffffff;
     li {
       margin: 10px 0;
-      a {
+      a,
+      p {
         padding-left: 5px;
         color: $text-color;
         font-family: $font;
@@ -33,6 +34,7 @@ $font: "Saira", sans-serif;
         text-decoration: underline;
 
         transition: color 250ms ease-in-out;
+        cursor: pointer;
 
         &:hover {
           color: lighten($bg, $amount: 30);

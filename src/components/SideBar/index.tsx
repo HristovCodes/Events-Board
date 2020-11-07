@@ -1,7 +1,7 @@
 // eslint-disable-next-line
 import React from "react";
 import "./style.scss";
-import { Link,  useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Firebase from "../../firebase";
 
 interface SideBarProps {
@@ -12,7 +12,13 @@ interface SideBarProps {
   userProfilePic: any;
 }
 
-export default function SideBar({ open, openSB, auth, userProfileName, userProfilePic}: SideBarProps) {
+export default function SideBar({
+  open,
+  openSB,
+  auth,
+  userProfileName,
+  userProfilePic,
+}: SideBarProps) {
   let history = useHistory();
 
   let signOut = function () {
@@ -33,19 +39,22 @@ export default function SideBar({ open, openSB, auth, userProfileName, userProfi
     <aside className={"sidebar " + open.toString()}>
       <ul>
         <li>
-          <a
+          <p
             onClick={() => {
               openSB(false);
               signOut();
             }}
           >
             Log off
-          </a>
+          </p>
         </li>
         <li>
-          <Link onClick={() => {
+          <Link
+            onClick={() => {
               openSB(false);
-            }} to="/Events-Board/Profile">
+            }}
+            to="/Events-Board/Profile"
+          >
             {userProfileName}
           </Link>
         </li>

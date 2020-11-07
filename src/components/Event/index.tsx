@@ -35,18 +35,18 @@ export default function Event({
         */}
         <summary>
           Lorem Ipsum is simply dummy text
-          <img></img>
+          <img alt={name}></img>
         </summary>
         <p>{description}</p>
       </details>
       <div className="buttons">
         <div className="going">
           <p>{ammountGoing}</p>
-          <a>Going</a>
+          <button type="button">Going</button>
         </div>
         <div className="interested">
           <p>{ammountInterested}</p>
-          <a>Interested</a>
+          <button type="button">Interested</button>
         </div>
       </div>
     </div>

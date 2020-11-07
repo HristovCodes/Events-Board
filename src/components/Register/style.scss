@@ -65,7 +65,9 @@ $secfont: "Roboto", sans-serif;
   a,
   a:active,
   a:focus,
-  a:visited {
+  a:visited,
+  button {
+    display: block;
     font-family: $secfont;
     text-align: center;
     text-decoration: none;

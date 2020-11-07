@@ -83,9 +83,9 @@ export default function Register({ auth }: RegisterInterface) {
             onChange={(e) => setPassword(e.target.value)}
           ></input>
         </div>
-        <a className="btnmain" onClick={registerUser}>
+        <button type="button" className="btnmain" onClick={registerUser}>
           Sign Up
-        </a>
+        </button>
         <Link className="btnsec" to="/Events-Board/Login">
           Sign In
         </Link>

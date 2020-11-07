@@ -59,9 +59,9 @@ export default function LogIn({ auth }: LogInInterface) {
             onChange={(e) => setPassword(e.target.value)}
           ></input>
         </div>
-        <a className="btnmain" onClick={logInUser}>
+        <button type="button" className="btnmain" onClick={logInUser}>
           Sign In
-        </a>
+        </button>
         <Link className="btnsec" to="/Events-Board/Register">
           Sign Up
         </Link>
