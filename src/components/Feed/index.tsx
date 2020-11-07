@@ -7,11 +7,9 @@ import Wrapper from "../Wrapper/index";
 
 interface FeedProps {
   onClick: any;
-  auth: any;
-  userData: any;
 }
 
-export default function Feed({ onClick, auth, userData }: FeedProps) {
+export default function Feed({ onClick }: FeedProps) {
   const [events, setEvents] = useState();
 
   let structureEvents = (data: [Object] | undefined) => {
