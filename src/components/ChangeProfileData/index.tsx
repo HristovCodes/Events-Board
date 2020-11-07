@@ -133,15 +133,16 @@ export default function ChangeProfileData({ auth, onClick }: ProfileProps) {
     //check if email prep form
     htmlToRender = (
       <Wrapper onClick={onClick} cssClass="updateform">
-        <h1>Please enter your new Email.</h1>
-        <label htmlFor="email">E-mail:</label>
-        <input
-          aria-required="true"
-          type="email"
-          name="email"
-          id="email"
-          onChange={(e) => setEmail(e.target.value)}
-        ></input>
+        <div className="subm">
+          <label htmlFor="email">Please enter your new E-mail:</label>
+          <input
+            aria-required="true"
+            type="email"
+            name="email"
+            id="email"
+            onChange={(e) => setEmail(e.target.value)}
+          ></input>
+        </div>
         <button className="btnmain" onClick={updateEmail}>
           Update Email
         </button>
@@ -153,29 +154,25 @@ export default function ChangeProfileData({ auth, onClick }: ProfileProps) {
     //check if photo and prep form
     htmlToRender = (
       <Wrapper onClick={onClick} cssClass="updateform">
-        <label htmlFor="photo">Photo URL:</label>
-        <input
-          aria-required="true"
-          type="input"
-          name="photo"
-          id="photo"
-          onChange={(e) => setPhotoURL(e.target.value)}
-        ></input>
-        <div>
-          <p>Live Preview</p>
-          <br></br>
-          <div className="imgPreview">
-            <img
-              src={photoURL}
-              alt="The link provided is not valid"
-              onLoad={() => setValidity(true)}
-              onError={() => setValidity(false)}
-            ></img>
-          </div>
+        <div className="subm">
+          <label htmlFor="photo">Photo URL:</label>
+          <input
+            aria-required="true"
+            type="input"
+            name="photo"
+            id="photo"
+            onChange={(e) => setPhotoURL(e.target.value)}
+          ></input>
         </div>
         <button className="btnmain" onClick={updatePhotoURL}>
           Update Photo
         </button>
+        <img
+          src={photoURL}
+          alt="The link provided is not valid"
+          onLoad={() => setValidity(true)}
+          onError={() => setValidity(false)}
+        ></img>
       </Wrapper>
     );
   }
@@ -184,7 +181,7 @@ export default function ChangeProfileData({ auth, onClick }: ProfileProps) {
     //check if password and prep form
     htmlToRender = (
       <Wrapper onClick={onClick} cssClass="updateform">
-        <div>
+        <div className="subm">
           <label htmlFor="password">Password:</label>
           <input
             aria-required="true"
@@ -194,7 +191,8 @@ export default function ChangeProfileData({ auth, onClick }: ProfileProps) {
             id="password"
             onChange={(e) => setPassword(e.target.value)}
           ></input>
-          <br></br>
+        </div>
+        <div className="subm">
           <label htmlFor="password">Confirm Password:</label>
           <input
             aria-required="true"
