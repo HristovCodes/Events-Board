@@ -1,5 +1,5 @@
 // eslint-disable-next-line
-import React from "react";
+import React, { useState } from "react";
 import "./style.scss";
 
 interface EventInterface {
@@ -19,26 +19,36 @@ export default function Event({
   ammountInterested,
   url,
 }: EventInterface) {
+  const [desc, setDesc] = useState(false);
+
   return (
     <div className="container">
       <header className="title">
         <h2>Date: {date}</h2>
         <h1>{name}</h1>
       </header>
-      <details className="desc">
-        {/* 
-        Tap on details make variable true
-        if the variable is true return p
-        if the variable is false return summary.
-        When "closed" show summary and image below it
-        When "opened" only show the p
+      <div className="flex">
+        <details className="desc">
+          {/* 
+            Tap on details make variable true
+            if the variable is true return p
+            if the variable is false return summary.
+            When "closed" show summary and image below it
+            When "opened" only show the p
         */}
-        <summary>
-          Lorem Ipsum is simply dummy text
-          <img alt={name}></img>
-        </summary>
-        <p>{description}</p>
-      </details>
+          {!desc ? (
+            <summary onClick={() => setDesc(!desc)}>
+              {description.indexOf(".") <= 100
+                ? description.substring(0, description.indexOf(".") + 1)
+                : description.substr(0, 100)}
+            </summary>
+          ) : (
+            <summary onClick={() => setDesc(!desc)}>Desciption: </summary>
+          )}
+          <p>{description.substr(0, 350)}</p>
+        </details>
+        {!desc ? <img className="imagelogo" src={url} alt={name}></img> : ""}
+      </div>
       <div className="buttons">
         <div className="going">
           <p>{ammountGoing}</p>

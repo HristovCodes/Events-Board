@@ -27,7 +27,7 @@ export default function Feed({ onClick }: FeedProps) {
                 description={valueb[1].eventDesc}
                 ammountGoing={1}
                 ammountInterested={0}
-                url={""}
+                url={valueb[1].eventUrl}
               ></Event>
             ),
           });
