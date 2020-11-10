@@ -169,9 +169,10 @@ export default function ChangeProfileData({ auth, onClick }: ProfileProps) {
         </button>
         <img
           src={photoURL}
-          alt="The link provided is not valid"
+          alt="Preview"
           onLoad={() => setValidity(true)}
           onError={() => setValidity(false)}
+          className={validPicURL ? "show" : "hide"}
         ></img>
       </Wrapper>
     );

@@ -48,16 +48,22 @@ $secfont: "Roboto", sans-serif;
     margin-right: 15%;
   }
 
-  & img {
-    display: block;
-    max-width: 200px;
-  }
-
   & .subm {
     width: 70%;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+  }
+}
+
+.updateform {
+  & .show {
+    display: block;
+    max-width: 200px;
+  }
+
+  & .hide {
+    display: none;
   }
 }
