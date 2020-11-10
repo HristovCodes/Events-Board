@@ -39,14 +39,14 @@ export default function SideBar({
     <aside className={"sidebar " + open.toString()}>
       <ul>
         <li>
-          <p
+          <Link
             onClick={() => {
               openSB(false);
-              signOut();
             }}
+            to="/Events-Board"
           >
-            Log off
-          </p>
+            Home
+          </Link>
         </li>
         <li>
           <Link
@@ -73,10 +73,20 @@ export default function SideBar({
             onClick={() => {
               openSB(false);
             }}
-            to="/Events-Board"
+            to="/Events-Board/About"
           >
-            Home
+            About
           </Link>
+        </li>
+        <li>
+          <p
+            onClick={() => {
+              openSB(false);
+              signOut();
+            }}
+          >
+            Log off
+          </p>
         </li>
       </ul>
     </aside>

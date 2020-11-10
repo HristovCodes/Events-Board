@@ -1,10 +1,6 @@
 // eslint-disable-next-line
 import React, { useEffect, useState } from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import LogIn from "../LogIn";
 import Feed from "../Feed";
 import Register from "../Register";
@@ -15,6 +11,7 @@ import SubmitEvent from "../SubmitEvent";
 import Profile from "../Profile";
 import ChangeProfileData from "../ChangeProfileData";
 import Error404 from "../Error404";
+import About from "../About";
 
 export default function Home() {
   const [open, openSB] = useState(false);
@@ -55,6 +52,9 @@ export default function Home() {
             </Route>
             <Route exact path="/Events-Board/ChangeProfileData">
               <ChangeProfileData auth={auth} onClick={openSB} />
+            </Route>
+            <Route exact path="/Events-Board/About">
+              <About onClick={openSB} />
             </Route>
             <Route path="/Events-Board/*">
               <Error404 onClick={openSB}></Error404>
