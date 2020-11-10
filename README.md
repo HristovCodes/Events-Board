@@ -8,7 +8,6 @@
 - [Installing dependencies](#installing-dependencies)
 - [Running the project](#running-the-development-server)
 - [Contributing](#contribute)
-- [Contributors](#contributors)
 
 ## Figma Board
 Link to the board [here](https://www.figma.com/file/uUpsCP0gak7711r98Poedw/App-Event-o-Board?node-id=0%3A1).
