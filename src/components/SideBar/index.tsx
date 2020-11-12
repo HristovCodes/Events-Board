@@ -79,6 +79,36 @@ export default function SideBar({
           </Link>
         </li>
         <li>
+          <Link
+            onClick={() => {
+              openSB(false);
+            }}
+            to="/Events-Board/Contacts"
+          >
+            Contacts
+          </Link>
+        </li>
+        <li>
+          <Link
+            onClick={() => {
+              openSB(false);
+            }}
+            to="/Events-Board/Faq"
+          >
+            Faq
+          </Link>
+        </li>
+        <li>
+          <Link
+            onClick={() => {
+              openSB(false);
+            }}
+            to="/Events-Board/PrivacyPolicy"
+          >
+            Privacy policy
+          </Link>
+        </li>
+        <li>
           <p
             onClick={() => {
               openSB(false);

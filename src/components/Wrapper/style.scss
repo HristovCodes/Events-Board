@@ -1,6 +1,8 @@
 /*
 Some styles that need to be applied to all pages
 */
+$color: #2c148b;
+$font: "Saira", sans-serif;
 
 // Makes the whole page clickable to close the sidebar
 .close {
@@ -25,4 +27,28 @@ Some styles that need to be applied to all pages
 
   background-image: url("../media/btn.png");
   background-position: center;
+}
+
+// Header, h2 and img (logo and name)
+.header {
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, 0);
+  cursor: pointer;
+  width: 300px;
+
+  & h2 {
+    text-align: center;
+    color: $color;
+    font-size: 28px;
+    font-weight: bold;
+    font-family: $font;
+    padding-top: 20px;
+  }
+  & img {
+    display: block;
+    margin: 0 auto;
+    padding-bottom: 20px;
+    width: 100px;
+  }
 }
