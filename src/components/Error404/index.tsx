@@ -2,6 +2,7 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 import Wrapper from "../Wrapper/index";
+import "./style.scss";
 
 interface NoMatchProps {
   onClick: any;
