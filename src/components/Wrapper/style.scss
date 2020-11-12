@@ -31,11 +31,7 @@ $font: "Saira", sans-serif;
 
 // Header, h2 and img (logo and name)
 .header {
-  position: relative;
-  left: 50%;
-  transform: translate(-50%, 0);
   cursor: pointer;
-  width: 300px;
 
   & h2 {
     text-align: center;

@@ -1,5 +1,6 @@
 // eslint-disable-next-line
 import React, { useState } from "react";
+import Firebase from "../../firebase";
 import "./style.scss";
 
 interface EventInterface {
@@ -9,6 +10,7 @@ interface EventInterface {
   ammountInterested: Number;
   ammountGoing: Number;
   url: string;
+  id: string;
 }
 
 export default function Event({
@@ -18,8 +20,23 @@ export default function Event({
   ammountGoing,
   ammountInterested,
   url,
+  id,
 }: EventInterface) {
   const [desc, setDesc] = useState(false);
+
+  let addAttendee = (state: string) => {
+    Firebase.auth.onAuthStateChanged(function (user) {
+      if (user !== null) {
+        var updates = {};
+        updates["/attendees/" + id + "/" + state + "/"] = {
+          user: user.displayName,
+        };
+        Firebase.database.ref().update(updates);
+      } else {
+        return;
+      }
+    });
+  };
 
   return (
     <div className="container">
@@ -52,11 +69,15 @@ export default function Event({
       <div className="buttons">
         <div className="going">
           <p>{ammountGoing}</p>
-          <button type="button">Going</button>
+          <button onClick={() => addAttendee("g")} type="button">
+            Going
+          </button>
         </div>
         <div className="interested">
           <p>{ammountInterested}</p>
-          <button type="button">Interested</button>
+          <button onClick={() => addAttendee("i")} type="button">
+            Interested
+          </button>
         </div>
       </div>
     </div>
