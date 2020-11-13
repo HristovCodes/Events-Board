@@ -31,22 +31,28 @@ export default function Feed({ onClick }: FeedProps) {
     eventData: [Object] | undefined,
     attendeesData: [Object] | undefined
   ) => {
-    if (eventData !== undefined && attendees !== undefined) {
+    if (eventData !== undefined && attendeesData !== undefined) {
       let temp = [];
 
       for (const valuea of Object.entries(eventData)) {
         for (const valueb of Object.entries(valuea[1])) {
           // valueb[0] is the unique key
-
-          // att is the list with attendees for the current event
-          let att = attendeesData[valueb[0]];
-          let g = 0;
-          let i = 0;
-          // if the list is empty g and i are 0
-          if (att) {
-            if (att["g"]) g = Object.values(att["g"]).length;
-            if (att["i"]) i = Object.values(att["i"]).length;
+          let att = {
+            g: 0,
+            i: 0,
+          };
+          for (const [key, val] of Object.entries(attendeesData)) {
+            if (key === valueb[0]) {
+              for (const x of Object.entries(val)) {
+                if (x[0] === "i") {
+                  att.i = Object.entries(x[1]).length;
+                } else {
+                  att.g = Object.entries(x[1]).length;
+                }
+              }
+            }
           }
+
           temp.push({
             0: valueb[0],
             1: (
@@ -54,8 +60,8 @@ export default function Feed({ onClick }: FeedProps) {
                 date={valueb[1].eventDate}
                 name={valueb[1].eventTitle}
                 description={valueb[1].eventDesc}
-                ammountGoing={g}
-                ammountInterested={i}
+                ammountGoing={att.g}
+                ammountInterested={att.i}
                 url={valueb[1].eventUrl}
                 id={valueb[0]}
               ></Event>
