@@ -2,9 +2,11 @@ $color: #2c148b;
 $font: "Saira", sans-serif;
 $secfont: "Roboto", sans-serif;
 
-h2,
-h3 {
-  text-align: center;
-  font-family: $font;
-  color: $color;
+.error404 {
+  h2,
+  h3 {
+    text-align: center;
+    font-family: $font;
+    color: $color;
+  }
 }
