@@ -1,0 +1,43 @@
+$color: #2c148b;
+$seccolor: #565656;
+$font: "Saira", sans-serif;
+$secfont: "Roboto", sans-serif;
+
+.privacypolicy {
+  h1,
+  h2,
+  h3 {
+    font-family: $font;
+    color: $color;
+    padding: 10px 15px;
+  }
+  h1 {
+    font-size: 28px;
+    text-decoration: underline;
+  }
+  h2 {
+    font-size: 22px;
+  }
+  h3 {
+    font-size: 20px;
+  }
+
+  p,
+  li {
+    padding: 5px 15px;
+  }
+  p {
+    font-family: $secfont;
+    color: $seccolor;
+  }
+  ul,
+  ol {
+    li {
+      font-family: $secfont;
+      color: $seccolor;
+      strong {
+        font-weight: bold;
+      }
+    }
+  }
+}

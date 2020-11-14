@@ -12,6 +12,7 @@ import Profile from "../Profile";
 import ChangeProfileData from "../ChangeProfileData";
 import Error404 from "../Error404";
 import About from "../About";
+import PrivacyPolicy from "../PrivacyPolicy";
 
 export default function Home() {
   const [open, openSB] = useState(false);
@@ -55,6 +56,9 @@ export default function Home() {
             </Route>
             <Route exact path="/Events-Board/About">
               <About onClick={openSB} />
+            </Route>
+            <Route exact path="/Events-Board/PrivacyPolicy">
+              <PrivacyPolicy onClick={openSB} />
             </Route>
             <Route path="/Events-Board/*">
               <Error404 onClick={openSB}></Error404>
