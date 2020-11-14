@@ -27,13 +27,21 @@ export default function About({ onClick }: AboutProps) {
       <h4>The people behind Events Board</h4>
       <p>
         Hristov
-        <a target="blank" href="https://github.com/HristovCodes">
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://github.com/HristovCodes"
+        >
           (github)
         </a>
       </p>
       <p>
         Bozhidar-A
-        <a target="blank" href="https://github.com/Bozhidar-A">
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://github.com/Bozhidar-A"
+        >
           (github)
         </a>
       </p>
