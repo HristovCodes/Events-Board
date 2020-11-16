@@ -31,8 +31,6 @@ $font: "Saira", sans-serif;
 
 // Header, h2 and img (logo and name)
 .header {
-  cursor: pointer;
-
   & h2 {
     text-align: center;
     color: $color;
@@ -40,11 +38,13 @@ $font: "Saira", sans-serif;
     font-weight: bold;
     font-family: $font;
     padding-top: 20px;
+    cursor: pointer;
   }
   & img {
     display: block;
     margin: 0 auto;
     padding-bottom: 20px;
     width: 100px;
+    cursor: pointer;
   }
 }

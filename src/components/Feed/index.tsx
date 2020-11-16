@@ -164,12 +164,17 @@ export default function Feed({ onClick }: FeedProps) {
 
   return (
     <Wrapper onClick={onClick} cssClass="home">
-      <label htmlFor="date">Choose a date to filter the events</label>
-      <input
-        type="date"
-        name="search"
-        onChange={(e) => setSearch(e.target.value)}
-      ></input>
+      <form className="searchform">
+        <label className="searchlbl" htmlFor="date">
+          Choose a date to filter the events
+        </label>
+        <input
+          type="date"
+          name="search"
+          className="search"
+          onChange={(e) => setSearch(e.target.value)}
+        ></input>
+      </form>
       {search
         ? eventsForDate(events, attendees)
         : structureEvents(events, attendees)}

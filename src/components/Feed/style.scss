@@ -1,3 +1,7 @@
+$color: #2c148b;
+$font: "Saira", sans-serif;
+$secfont: "Roboto", sans-serif;
+
 .eventsGrid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -5,5 +9,26 @@
 
   li {
     justify-self: center;
+  }
+}
+
+.searchform {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  .searchlbl,
+  .search {
+    font-family: $font;
+    color: $color;
+    font-size: 14px;
+    margin: 15px 5px;
+    z-index: 1;
+  }
+  .search {
+    border-color: lighten($color: $color, $amount: 30);
+    border-style: solid;
+    border-radius: 4px;
   }
 }
