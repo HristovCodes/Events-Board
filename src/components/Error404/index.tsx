@@ -1,6 +1,6 @@
 // eslint-disable-next-line
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Wrapper from "../Wrapper/index";
 import "./style.scss";
 
@@ -17,6 +17,7 @@ export default function Error404({ onClick }: Error404Props) {
       <h3>
         No match for <code>{location.pathname}</code>
       </h3>
+      <Link to="/Events-Board/">Go back to Home</Link>
     </Wrapper>
   );
 }

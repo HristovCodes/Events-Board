@@ -4,9 +4,16 @@ $secfont: "Roboto", sans-serif;
 
 .error404 {
   h2,
-  h3 {
+  h3,
+  a {
     text-align: center;
     font-family: $font;
     color: $color;
+  }
+  a {
+    padding: 10px 0;
+    text-decoration: none;
+    font-weight: 600;
+    display: block;
   }
 }
