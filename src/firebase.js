@@ -16,14 +16,16 @@ const firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
-let event = (title, date, desc) => {
-  if (title && date && desc) {
+let event = (title, date, desc, pic, location) => {
+  if (title && date && desc && pic && location) {
     let newPostKey = firebase.database().ref().child("events").push().key;
     let data = {};
     data[newPostKey] = {
       eventTitle: title,
       eventDate: date,
       eventDesc: desc,
+      eventPic: pic,
+      eventLocation: location,
     };
     firebase
       .database()

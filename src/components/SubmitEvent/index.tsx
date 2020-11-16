@@ -13,11 +13,13 @@ export default function SubmitEvent({ onClick }: SubmitEventProps) {
   const [title, setTitle] = useState("");
   const [date, setDate] = useState("");
   const [desc, setDesc] = useState("");
+  const [pic, setPic] = useState("");
+  const [location, setLocation] = useState("");
 
   let history = useHistory();
 
   let submitEvent = () => {
-    Firebase.submitEvent(title, date, desc);
+    Firebase.submitEvent(title, date, desc, pic, location);
     history.replace("/Events-Board");
   };
 
@@ -53,6 +55,26 @@ export default function SubmitEvent({ onClick }: SubmitEventProps) {
             name="desc"
             id="desc"
             onChange={(e) => setDesc(e.target.value)}
+          ></input>
+        </div>
+        <div>
+          <label htmlFor="logo">Logo url:</label>
+          <input
+            aria-required="true"
+            type="text"
+            name="logo"
+            id="logo"
+            onChange={(e) => setPic(e.target.value)}
+          ></input>
+        </div>
+        <div>
+          <label htmlFor="location">Location:</label>
+          <input
+            aria-required="true"
+            type="text"
+            name="location"
+            id="location"
+            onChange={(e) => setLocation(e.target.value)}
           ></input>
         </div>
         <button type="button" className="btnmain" onClick={submitEvent}>
