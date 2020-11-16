@@ -4,11 +4,11 @@ import { useLocation } from "react-router-dom";
 import Wrapper from "../Wrapper/index";
 import "./style.scss";
 
-interface NoMatchProps {
+interface Error404Props {
   onClick: any;
 }
 
-export default function NoMatch({ onClick }: NoMatchProps) {
+export default function Error404({ onClick }: Error404Props) {
   let location = useLocation();
 
   return (
