@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/Events-Board/static/css/main.1d9ae62e.chunk.css",
-    "main.js": "/Events-Board/static/js/main.a128b26e.chunk.js",
-    "main.js.map": "/Events-Board/static/js/main.a128b26e.chunk.js.map",
+    "main.js": "/Events-Board/static/js/main.8b9bda39.chunk.js",
+    "main.js.map": "/Events-Board/static/js/main.8b9bda39.chunk.js.map",
     "runtime-main.js": "/Events-Board/static/js/runtime-main.3bbe8b15.js",
     "runtime-main.js.map": "/Events-Board/static/js/runtime-main.3bbe8b15.js.map",
     "static/js/2.7705be77.chunk.js": "/Events-Board/static/js/2.7705be77.chunk.js",
     "static/js/2.7705be77.chunk.js.map": "/Events-Board/static/js/2.7705be77.chunk.js.map",
     "index.html": "/Events-Board/index.html",
-    "precache-manifest.3f9c6d8450835948f4f4537a3cb4f389.js": "/Events-Board/precache-manifest.3f9c6d8450835948f4f4537a3cb4f389.js",
+    "precache-manifest.a4835b97d0f19fc71fbad071c844ff3b.js": "/Events-Board/precache-manifest.a4835b97d0f19fc71fbad071c844ff3b.js",
     "service-worker.js": "/Events-Board/service-worker.js",
     "static/css/main.1d9ae62e.chunk.css.map": "/Events-Board/static/css/main.1d9ae62e.chunk.css.map",
     "static/js/2.7705be77.chunk.js.LICENSE.txt": "/Events-Board/static/js/2.7705be77.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.3bbe8b15.js",
     "static/js/2.7705be77.chunk.js",
     "static/css/main.1d9ae62e.chunk.css",
-    "static/js/main.a128b26e.chunk.js"
+    "static/js/main.8b9bda39.chunk.js"
   ]
 }
