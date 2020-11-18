@@ -14,11 +14,6 @@ export default function Contact({ onClick }: ContactProps) {
   const [message, setMessage] = useState("");
   const [captcha, setCaptcha] = useState(false);
 
-  let resetForm = () => {
-    setEmail("");
-    setMessage("");
-  };
-
   let sendEmail = (e: any) => {
     e.preventDefault();
 
