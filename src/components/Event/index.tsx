@@ -28,7 +28,7 @@ export default function Event({
     Firebase.auth.onAuthStateChanged(function (user) {
       if (user !== null) {
         Firebase.database
-          .ref("/attendees/" + id + "/" + state + "/" + user.displayName)
+          .ref("/attendees/" + id + "/" + state + "/" + user.email)
           .update({ name: user.displayName });
       } else {
         return;
