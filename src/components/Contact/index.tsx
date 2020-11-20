@@ -14,29 +14,38 @@ export default function Contact({ onClick, userData }: ContactProps) {
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
   const [captcha, setCaptcha] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   let sendEmail = (e: any) => {
-    if (captcha) {
-      let form = e.target;
-      e.preventDefault();
+    let form = e.target;
+    e.preventDefault();
 
-      let templateParams = {
-        from_name: name,
-        from_email: userData.email,
-        messageForm: message,
-      };
-      emailjs
-        .send(
-          "service_7kutrc2",
-          "template_0aan5qq",
-          templateParams,
-          "user_iO7iJq15zyR93hwn516Jd"
-        )
-        .then(() => {
+    let templateParams = {
+      from_name: name,
+      from_email: userData.email,
+      messageForm: message,
+    };
+    emailjs
+      .send(
+        "service_7kutrc2",
+        "template_0aan5qq",
+        templateParams,
+        "user_iO7iJq15zyR93hwn516Jd"
+      )
+      .then(
+        () => {
           // clears the form is the message is sent succesfuly
           form.reset();
-        });
-    }
+        },
+        (e) => {
+          if (e.status === 400)
+            setErrorMessage("Please solve the captcha before submitting");
+        }
+      )
+      .catch((e) => {
+        if (e.status === 400)
+          setErrorMessage("Please solve the captcha before submitting");
+      });
   };
 
   return (
@@ -49,6 +58,7 @@ export default function Contact({ onClick, userData }: ContactProps) {
             onChange={(e) => setName(e.target.value)}
             type="text"
             name="user_name"
+            required
           />
         </div>
         <div>
@@ -56,6 +66,7 @@ export default function Contact({ onClick, userData }: ContactProps) {
           <textarea
             onChange={(e) => setMessage(e.target.value)}
             name="message"
+            required
           />
         </div>
         <Reaptcha
@@ -63,6 +74,9 @@ export default function Contact({ onClick, userData }: ContactProps) {
           sitekey="6LeBcOQZAAAAAMJoVuzrOicNjxO-Y2PksCxNYaAd"
           onVerify={() => setCaptcha(true)}
         />
+        <div>
+          <p>{errorMessage}</p>
+        </div>
         <button type="submit" className="button">
           Send
         </button>
