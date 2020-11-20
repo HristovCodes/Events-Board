@@ -15,18 +15,26 @@ export default function Contact({ onClick }: ContactProps) {
   const [captcha, setCaptcha] = useState(false);
 
   let sendEmail = (e: any) => {
-    e.preventDefault();
+    if (captcha) {
+      let form = e.target;
+      e.preventDefault();
 
-    let templateParams = {
-      from_name: email,
-      messageForm: message,
-    };
-    emailjs.send(
-      "service_7kutrc2",
-      "template_0aan5qq",
-      templateParams,
-      "user_iO7iJq15zyR93hwn516Jd"
-    );
+      let templateParams = {
+        from_name: email,
+        messageForm: message,
+      };
+      emailjs
+        .send(
+          "service_7kutrc2",
+          "template_0aan5qq",
+          templateParams,
+          "user_iO7iJq15zyR93hwn516Jd"
+        )
+        .then(() => {
+          // clears the form is the message is sent succesfuly
+          form.reset();
+        });
+    }
   };
 
   return (
