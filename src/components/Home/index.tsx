@@ -66,7 +66,7 @@ export default function Home() {
               <Faq onClick={openSB} />
             </Route>
             <Route exact path="/Events-Board/Contacts">
-              <Contact onClick={openSB} />
+              <Contact userData={userData} onClick={openSB} />
             </Route>
             <Route path="/Events-Board/*">
               <Error404 onClick={openSB}></Error404>

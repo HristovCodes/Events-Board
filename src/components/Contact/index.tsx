@@ -7,10 +7,11 @@ import "./style.scss";
 
 interface ContactProps {
   onClick: any;
+  userData: any;
 }
 
-export default function Contact({ onClick }: ContactProps) {
-  const [email, setEmail] = useState("");
+export default function Contact({ onClick, userData }: ContactProps) {
+  const [name, setName] = useState("");
   const [message, setMessage] = useState("");
   const [captcha, setCaptcha] = useState(false);
 
@@ -20,7 +21,8 @@ export default function Contact({ onClick }: ContactProps) {
       e.preventDefault();
 
       let templateParams = {
-        from_name: email,
+        from_name: name,
+        from_email: userData.email,
         messageForm: message,
       };
       emailjs
@@ -42,11 +44,11 @@ export default function Contact({ onClick }: ContactProps) {
       <form className="contactform" onSubmit={sendEmail}>
         <h1>Get in touch with us</h1>
         <div>
-          <label htmlFor="user_email">Email</label>
+          <label htmlFor="user_name">Name</label>
           <input
-            onChange={(e) => setEmail(e.target.value)}
-            type="email"
-            name="user_email"
+            onChange={(e) => setName(e.target.value)}
+            type="text"
+            name="user_name"
           />
         </div>
         <div>
