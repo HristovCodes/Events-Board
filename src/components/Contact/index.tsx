@@ -20,32 +20,34 @@ export default function Contact({ onClick, userData }: ContactProps) {
     let form = e.target;
     e.preventDefault();
 
-    let templateParams = {
-      from_name: name,
-      from_email: userData.email,
-      messageForm: message,
-    };
-    emailjs
-      .send(
-        "service_7kutrc2",
-        "template_0aan5qq",
-        templateParams,
-        "user_iO7iJq15zyR93hwn516Jd"
-      )
-      .then(
-        () => {
-          // clears the form is the message is sent succesfuly
-          form.reset();
-        },
-        (e) => {
+    if (captcha) {
+      let templateParams = {
+        from_name: name,
+        from_email: userData.email,
+        messageForm: message,
+      };
+      emailjs
+        .send(
+          "service_7kutrc2",
+          "template_0aan5qq",
+          templateParams,
+          "user_iO7iJq15zyR93hwn516Jd"
+        )
+        .then(
+          () => {
+            // clears the form if the message is sent succesfuly
+            form.reset();
+          },
+          (e) => {
+            if (e.status === 400)
+              setErrorMessage("Please solve the captcha before submitting");
+          }
+        )
+        .catch((e) => {
           if (e.status === 400)
             setErrorMessage("Please solve the captcha before submitting");
-        }
-      )
-      .catch((e) => {
-        if (e.status === 400)
-          setErrorMessage("Please solve the captcha before submitting");
-      });
+        });
+    }
   };
 
   return (

@@ -15,7 +15,8 @@ export default function LogIn({ auth }: LogInInterface) {
 
   let history = useHistory();
 
-  let logInUser = function () {
+  let logInUser = (e: any) => {
+    e.preventDefault();
     Firebase.auth
       .signInWithEmailAndPassword(email, password)
       .then(() => {
@@ -28,15 +29,14 @@ export default function LogIn({ auth }: LogInInterface) {
       })
       .catch(function (error) {
         // Handle Errors here.
-        alert(error.code);
-        alert(error.message);
+        console.log(error.message);
         history.replace("/Events-Board/Login");
       });
   };
 
   return (
     <div className="login">
-      <form className="logform">
+      <form onSubmit={logInUser} className="logform">
         <h1>Eventó Board</h1>
         <div>
           <label htmlFor="email">E-mail:</label>
@@ -46,6 +46,13 @@ export default function LogIn({ auth }: LogInInterface) {
             name="email"
             id="email"
             onChange={(e) => setEmail(e.target.value)}
+            onInvalid={(e) => {
+              e.currentTarget.setCustomValidity("");
+              if (e.currentTarget.validity.typeMismatch)
+                e.currentTarget.setCustomValidity(
+                  "The email address is invalid."
+                );
+            }}
           ></input>
         </div>
         <div>
@@ -57,9 +64,16 @@ export default function LogIn({ auth }: LogInInterface) {
             name="password"
             id="password"
             onChange={(e) => setPassword(e.target.value)}
+            onInvalid={(e) => {
+              e.currentTarget.setCustomValidity("");
+              if (e.currentTarget.validity.typeMismatch)
+                e.currentTarget.setCustomValidity(
+                  "Password must be at least 8 characters long and contain one number and one or more capital letters."
+                );
+            }}
           ></input>
         </div>
-        <button type="button" className="btnmain" onClick={logInUser}>
+        <button type="submit" className="btnmain">
           Sign In
         </button>
         <Link className="btnsec" to="/Events-Board/Register">

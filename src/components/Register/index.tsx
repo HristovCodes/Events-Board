@@ -16,14 +16,14 @@ export default function Register({ auth }: RegisterInterface) {
 
   let history = useHistory();
 
-  let registerUser = function () {
+  let registerUser = (e: any) => {
+    e.preventDefault();
     Firebase.auth
       .createUserWithEmailAndPassword(email, password)
       .then(() => {
         Firebase.auth.onAuthStateChanged(function (user) {
           if (user) {
             user.updateProfile({ displayName: name }).catch(function (error) {
-              console.log(error.code);
               console.log(error.message);
             });
             user
@@ -33,7 +33,6 @@ export default function Register({ auth }: RegisterInterface) {
                 history.replace("/Events-Board");
               })
               .catch(function (error) {
-                console.log(error.code);
                 console.log(error.message);
               });
           }
@@ -41,15 +40,14 @@ export default function Register({ auth }: RegisterInterface) {
       })
       .catch(function (error) {
         // Handle Errors here.
-        alert(error.code);
-        alert(error.message);
+        console.log(error.message);
         history.replace("/Events-Board/Register");
       });
   };
 
   return (
     <div className="register">
-      <form className="regform">
+      <form onSubmit={registerUser} className="regform">
         <h1>Eventó Board</h1>
         <div>
           <label htmlFor="email">E-mail:</label>
@@ -58,18 +56,34 @@ export default function Register({ auth }: RegisterInterface) {
             type="email"
             name="email"
             id="email"
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
+            onInvalid={(e) => {
+              e.currentTarget.setCustomValidity("");
+              if (e.currentTarget.validity.typeMismatch)
+                e.currentTarget.setCustomValidity(
+                  "The email address is invalid."
+                );
+            }}
           ></input>
         </div>
         <div>
           <label htmlFor="username">Username:</label>
           <input
             aria-required="true"
-            pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$"
+            pattern="^[a-zA-Z][a-zA-Z0-9]{1,20}$"
             type="text"
             name="username"
             id="username"
             onChange={(e) => setName(e.target.value)}
+            onInvalid={(e) => {
+              e.currentTarget.setCustomValidity("");
+              if (!e.currentTarget.validity.valid)
+                e.currentTarget.setCustomValidity(
+                  "Username is too short or contains special characters."
+                );
+            }}
           ></input>
         </div>
         <div>
@@ -81,9 +95,16 @@ export default function Register({ auth }: RegisterInterface) {
             name="password"
             id="password"
             onChange={(e) => setPassword(e.target.value)}
+            onInvalid={(e) => {
+              e.currentTarget.setCustomValidity("");
+              if (!e.currentTarget.validity.valid)
+                e.currentTarget.setCustomValidity(
+                  "Password must be at least 8 characters long and contain one number and one or more capital letters."
+                );
+            }}
           ></input>
         </div>
-        <button type="button" className="btnmain" onClick={registerUser}>
+        <button type="submit" className="btnmain">
           Sign Up
         </button>
         <Link className="btnsec" to="/Events-Board/Login">
