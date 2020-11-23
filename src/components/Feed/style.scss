@@ -12,6 +12,18 @@ $secfont: "Roboto", sans-serif;
   }
 }
 
+.home {
+  .loading {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0%);
+
+    font-family: $secfont;
+    font-size: 14px;
+    color: #565656;
+  }
+}
+
 .searchform {
   display: flex;
   flex-direction: row;

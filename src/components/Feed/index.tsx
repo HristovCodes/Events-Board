@@ -1,35 +1,49 @@
 // eslint-disable-next-line
-import React, { useEffect, useState } from "react";
+import React, { CSSProperties, useEffect, useState } from "react";
 import "./style.scss";
 import Event from "../Event/index";
 import Firebase from "../../firebase";
 import Wrapper from "../Wrapper/index";
+import ReactLoading from "react-loading";
 
 interface FeedProps {
   onClick: any;
-}
-
-function isDateAfterToday(date: string) {
-  // today
-  let today = new Date();
-  today.setFullYear(today.getFullYear());
-  today.setDate(today.getDate());
-  today.setMonth(today.getMonth());
-  // date of the event
-  let dateyyyy = +date.substring(0, 4);
-  let datemm = +date.substring(5, 7) - 1;
-  let datedd = +date.substring(8, 10);
-  let temp = new Date(dateyyyy, datemm, datedd);
-  if (temp < today) {
-    return false;
-  }
-  return true;
 }
 
 export default function Feed({ onClick }: FeedProps) {
   const [events, setEvents] = useState();
   const [attendees, setAttendees] = useState();
   const [search, setSearch] = useState("");
+
+  const isDateAfterToday = (date: string) => {
+    // today
+    let today = new Date();
+    today.setFullYear(today.getFullYear());
+    today.setDate(today.getDate());
+    today.setMonth(today.getMonth());
+    // date of the event
+    let dateyyyy = +date.substring(0, 4);
+    let datemm = +date.substring(5, 7) - 1;
+    let datedd = +date.substring(8, 10);
+    let temp = new Date(dateyyyy, datemm, datedd);
+    if (temp < today) {
+      return false;
+    }
+    return true;
+  };
+
+  // calculates scrollbarwidth and returns is as margin to offset
+  const getMarginR = () => {
+    document.documentElement.style.overflow = "scroll"; // forcing scrollbar to appear
+    let scrollbarWidth =
+      window.innerWidth - document.documentElement.clientWidth;
+    document.documentElement.style.overflow = "hidden"; // forcing scrollbar to disappear
+
+    let style = {
+      marginRight: scrollbarWidth.toString() + "px",
+    };
+    return style;
+  };
 
   // single call to the database to get both events and attendees
   let getData = () => {
@@ -90,7 +104,7 @@ export default function Feed({ onClick }: FeedProps) {
           }
       }
       let wrapper = (
-        <ul className="eventsGrid">
+        <ul style={getMarginR()} className="eventsGrid">
           {temp.map((el) => {
             return <li key={el[0]}>{el[1]}</li>;
           })}
@@ -98,7 +112,15 @@ export default function Feed({ onClick }: FeedProps) {
       );
       return wrapper;
     }
-    return <p>"Loading..."</p>;
+    return (
+      <ReactLoading
+        type={"bars"}
+        color={"#2c148b"}
+        height={"60px"}
+        width={"60px"}
+        className="loading"
+      />
+    );
   };
 
   // only returns events that match the date searched for
@@ -110,7 +132,7 @@ export default function Feed({ onClick }: FeedProps) {
       let temp = [];
 
       for (const valuea of Object.entries(eventData)) {
-        if (valuea[0] === search)
+        if (valuea[0] === search) {
           for (const valueb of Object.entries(valuea[1])) {
             // valueb[0] is the unique key
             let att = {
@@ -144,9 +166,14 @@ export default function Feed({ onClick }: FeedProps) {
               ),
             });
           }
+        } else {
+          return (
+            <p className="loading">Nothing found for the selected date.</p>
+          );
+        }
       }
       let wrapper = (
-        <ul className="eventsGrid">
+        <ul style={getMarginR()} className="eventsGrid">
           {temp.map((el) => {
             return <li key={el[0]}>{el[1]}</li>;
           })}
@@ -154,7 +181,15 @@ export default function Feed({ onClick }: FeedProps) {
       );
       return wrapper;
     }
-    return <p>"Loading..."</p>;
+    return (
+      <ReactLoading
+        type={"bars"}
+        color={"#2c148b"}
+        height={"60px"}
+        width={"60px"}
+        className="loading"
+      />
+    );
   };
 
   useEffect(() => {
