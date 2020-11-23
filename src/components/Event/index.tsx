@@ -27,9 +27,13 @@ export default function Event({
   let addAttendee = (state: string) => {
     Firebase.auth.onAuthStateChanged(function (user) {
       if (user !== null) {
-        Firebase.database
-          .ref("/attendees/" + id + "/" + state + "/" + user.email)
-          .update({ name: user.displayName });
+        let email = user.email;
+        if (email) {
+          email = email.substring(0, email.indexOf("@"));
+          Firebase.database
+            .ref("/attendees/" + id + "/" + state + "/" + email)
+            .update({ name: user.displayName });
+        }
       } else {
         return;
       }
