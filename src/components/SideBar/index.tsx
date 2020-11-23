@@ -37,6 +37,24 @@ export default function SideBar({
 
   return (
     <aside className={"sidebar " + open.toString()}>
+      <div className="profile">
+        <img
+          onClick={() => {
+            openSB(false);
+            history.replace("/Events-Board/Profile");
+          }}
+          src={userProfilePic}
+          alt="user's thumbnail"
+        ></img>
+        <Link
+          onClick={() => {
+            openSB(false);
+          }}
+          to="/Events-Board/Profile"
+        >
+          {userProfileName}
+        </Link>
+      </div>
       <ul>
         <li>
           <Link
@@ -46,16 +64,6 @@ export default function SideBar({
             to="/Events-Board"
           >
             Home
-          </Link>
-        </li>
-        <li>
-          <Link
-            onClick={() => {
-              openSB(false);
-            }}
-            to="/Events-Board/Profile"
-          >
-            {userProfileName}
           </Link>
         </li>
         <li>
