@@ -16,13 +16,14 @@ $font: "Saira", sans-serif;
   transform: translate(-50%, -50%);
   top: 90%;
   left: 90%;
+  z-index: 10;
 
   cursor: pointer;
 
   width: 40px;
   height: 40px;
 
-  border: solid #ffffff 2px;
+  border: solid #ffffff 0px;
   border-radius: 20px;
 
   background-image: url("../media/btn.png");
@@ -31,7 +32,7 @@ $font: "Saira", sans-serif;
 
 // Header, h2 and img (logo and name)
 .header {
-  & h2 {
+  & .title {
     text-align: center;
     color: $color;
     font-size: 28px;

@@ -30,7 +30,7 @@ export default function Wrapper({ onClick, cssClass, children }: WrapperProps) {
       ></button>
       <div className={"close " + cssClass} onClick={() => onClick(false)}>
         <header className="header" onClick={() => goHome()}>
-          <h2>Events Board</h2>
+          <h2 className="title">Events Board</h2>
           <img src={Logo} alt="Events Board logo"></img>
         </header>
         {children}
