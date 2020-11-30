@@ -15,6 +15,7 @@ import About from "../About";
 import PrivacyPolicy from "../PrivacyPolicy";
 import Faq from "../Faq";
 import Contact from "../Contact";
+import ResetPassword from "../ResetPassword";
 
 export default function Home() {
   const [open, openSB] = useState(false);
@@ -79,6 +80,9 @@ export default function Home() {
             </Route>
             <Route path="/Events-Board/Register">
               <Register auth={auth} />
+            </Route>
+            <Route path="/Events-Board/ResetPassword">
+              <ResetPassword auth={auth} />
             </Route>
             <Route path="/Events-Board/*">
               <Error404 onClick={openSB}></Error404>

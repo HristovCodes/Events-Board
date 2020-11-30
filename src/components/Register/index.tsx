@@ -1,6 +1,6 @@
 // eslint-disable-next-line
 import React, { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import "./style.scss";
 import Logo from "../media/logo.png";
 import Firebase from "../../firebase";
@@ -107,9 +107,15 @@ export default function Register({ auth }: RegisterInterface) {
         <button type="submit" className="btnmain">
           Sign Up
         </button>
-        <Link className="btnsec" to="/Events-Board/Login">
+        <button
+          onClick={() => {
+            history.replace("/Events-Board/Login");
+          }}
+          type="button"
+          className="btnsec"
+        >
           Sign In
-        </Link>
+        </button>
         <img src={Logo} alt="logo"></img>
       </form>
     </div>

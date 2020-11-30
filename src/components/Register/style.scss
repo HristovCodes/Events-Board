@@ -56,17 +56,21 @@ $secfont: "Roboto", sans-serif;
     margin-bottom: 30px;
   }
 
-  h1 {
+  h1,
+  h2 {
     font-family: $font;
-    font-weight: 700;
-    font-size: 2em;
     margin-top: 15px;
   }
+  h1 {
+    font-weight: 700;
+    font-size: 2em;
+  }
+  h2 {
+    font-size: 1.1em;
+    text-align: center;
+    padding: 0 15px;
+  }
 
-  a,
-  a:active,
-  a:focus,
-  a:visited,
   button {
     display: block;
     font-family: $secfont;
@@ -80,6 +84,17 @@ $secfont: "Roboto", sans-serif;
 
     border: 1px solid $color;
     border-radius: 3px;
+  }
+
+  a,
+  a:active,
+  a:focus,
+  a:visited {
+    font-size: 0.75em;
+    font-family: $secfont;
+    text-align: end;
+    text-decoration: underline;
+    color: $color;
   }
 
   > .btnmain {

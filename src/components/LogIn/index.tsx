@@ -59,26 +59,27 @@ export default function LogIn({ auth }: LogInInterface) {
           <label htmlFor="password">Password:</label>
           <input
             aria-required="true"
-            pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
             type="password"
             name="password"
             id="password"
             onChange={(e) => setPassword(e.target.value)}
-            onInvalid={(e) => {
-              e.currentTarget.setCustomValidity("");
-              if (e.currentTarget.validity.typeMismatch)
-                e.currentTarget.setCustomValidity(
-                  "Password must be at least 8 characters long and contain one number and one or more capital letters."
-                );
-            }}
           ></input>
+        </div>
+        <div className="resetpassword">
+          <Link to="/Events-Board/ResetPassword">I forgot my password</Link>
         </div>
         <button type="submit" className="btnmain">
           Sign In
         </button>
-        <Link className="btnsec" to="/Events-Board/Register">
+        <button
+          onClick={() => {
+            history.replace("/Events-Board/Register");
+          }}
+          type="button"
+          className="btnsec"
+        >
           Sign Up
-        </Link>
+        </button>
         <img src={Logo} alt="logo"></img>
       </form>
     </div>
